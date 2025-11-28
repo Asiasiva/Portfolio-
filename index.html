@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sivakumar T. - Professional Portfolio</title>
-    <!-- Load Tailwind CSS -->
+    <!-- Tailwind CSS ஐ ஏற்றுகிறது -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons -->
+    <!-- Lucide Icon களை ஏற்றுகிறது -->
     <script type="module" src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
-        /* Define the font family (Inter is default for Tailwind but explicitly set here) */
+        /* எழுத்துரு குடும்பத்தை அமைக்கிறது (Inter) */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
         }
-        /* Custom scrollbar for a cleaner look */
+        /* ஸ்க்ரோல்பார் தோற்றத்தை தனிப்பயனாக்குகிறது */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -26,9 +26,10 @@
         ::-webkit-scrollbar-track {
             background: #1f2937;
         }
-        /* New style for enhanced project link button */
+        /* ப்ராஜெக்ட் லிங்க் பொத்தானின் மேம்படுத்தப்பட்ட வடிவம் */
         .project-link-button {
-            @apply inline-flex items-center px-4 py-2 font-medium text-white bg-indigo-600 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:bg-indigo-500;
+            /* பொத்தானின் வடிவமைப்பு: எழுத்துரு, பேடிங், நிறம் மற்றும் நிழல் */
+            @apply inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-indigo-600 rounded-xl shadow-lg transition duration-300 transform hover:scale-[1.03] hover:bg-indigo-500 mt-4;
         }
     </style>
 </head>
@@ -39,7 +40,7 @@
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
             <a href="#home" class="text-2xl font-bold text-indigo-400 hover:text-indigo-300 transition duration-300">Sivakumar.T</a>
             
-            <!-- Desktop Navigation -->
+            <!-- டெஸ்க்டாப் வழிசெலுத்தல் -->
             <div class="hidden md:flex space-x-6">
                 <a href="#home" class="nav-link">Home</a>
                 <a href="#about" class="nav-link">About</a>
@@ -48,13 +49,13 @@
                 <a href="#contact" class="nav-link">Contact</a>
             </div>
 
-            <!-- Mobile Menu Button (Hamburger) -->
+            <!-- மொபைல் மெனு பொத்தான் -->
             <button id="menu-button" class="md:hidden text-gray-300 hover:text-indigo-400 focus:outline-none">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </nav>
 
-        <!-- Mobile Menu (Hidden by default) -->
+        <!-- மொபைல் மெனு -->
         <div id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700">
             <a href="#home" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 transition duration-300">Home</a>
             <a href="#about" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 transition duration-300">About</a>
@@ -65,7 +66,7 @@
     </header>
 
     <main class="max-w-7xl mx-auto">
-        <!-- Hero Section -->
+        <!-- ஹீரோ பிரிவு -->
         <section id="home" class="h-[80vh] flex items-center justify-center text-center p-4">
             <div class="space-y-6">
                 <p class="text-xl text-indigo-400 font-medium">Hello, I'm</p>
@@ -82,13 +83,14 @@
             </div>
         </section>
 
-        <!-- About Section -->
+        <!-- என்னைப் பற்றி பிரிவு -->
         <section id="about" class="py-20 px-4">
             <div class="bg-gray-800 p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-700">
                 <h2 class="section-heading">About Me</h2>
                 <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <!-- Profile Picture with Modern Styling (Image source corrected) -->
+                    <!-- ப்ரொஃபைல் படம் -->
                     <div class="relative w-full aspect-square md:aspect-auto h-72 md:h-full bg-gray-700 rounded-3xl overflow-hidden shadow-2xl border border-indigo-600/50">
+                        <!-- பதிவேற்றிய படத்தின் மூலத்தை பயன்படுத்துகிறது. படம் தெரியாததால், onerror fallback உள்ளது. -->
                         <img 
                             src="uploaded:1000168568.jpg-7c225155-4d7d-4826-9ef8-02e7e7e794bc" 
                             alt="Sivakumar T. professional photo" 
@@ -113,35 +115,35 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
+        <!-- திறன்கள் பிரிவு -->
         <section id="skills" class="py-20 px-4">
             <h2 class="section-heading">Technical Skills</h2>
             <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- Skill Card 1: Frontend -->
+                <!-- திறன் அட்டை 1: Frontend -->
                 <div class="skill-card">
                     <i data-lucide="layout-grid" class="icon-primary"></i>
                     <h3 class="skill-title">Frontend</h3>
                     <p class="skill-description">HTML, CSS, JavaScript, Responsive Design</p>
                 </div>
-                <!-- Skill Card 2: CMS/Tools -->
+                <!-- திறன் அட்டை 2: CMS/Tools -->
                 <div class="skill-card">
                     <i data-lucide="blocks" class="icon-primary"></i>
                     <h3 class="skill-title">CMS & Tools</h3>
                     <p class="skill-description">Blogger/Blogspot, Figma, Git, GitHub Pages</p>
                 </div>
-                <!-- Skill Card 3: Templating -->
+                <!-- திறன் அட்டை 3: Templating -->
                 <div class="skill-card">
                     <i data-lucide="database" class="icon-primary"></i>
                     <h3 class="skill-title">Templating</h3>
                     <p class="skill-description">Basic Web Templates, Static Site Generation</p>
                 </div>
-                <!-- Skill Card 4: Design -->
+                <!-- திறன் அட்டை 4: Design -->
                 <div class="skill-card">
                     <i data-lucide="palette" class="icon-primary"></i>
                     <h3 class="skill-title">Design</h3>
                     <p class="skill-description">UI/UX Principles, Web Aesthetics</p>
                 </div>
-                <!-- Skill Card 5: Core -->
+                <!-- திறன் அட்டை 5: Core -->
                 <div class="skill-card lg:col-span-1 sm:col-span-3 col-span-2 mx-auto sm:mx-0">
                     <i data-lucide="code" class="icon-primary"></i>
                     <h3 class="skill-title">Core</h3>
@@ -150,12 +152,12 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- ப்ராஜெக்ட் பிரிவு -->
         <section id="projects" class="py-20 px-4 bg-gray-800/50">
             <h2 class="section-heading">Featured Projects</h2>
             <div class="grid md:grid-cols-2 gap-10">
                 
-                <!-- Project Card 1: Kongu Region Research Center -->
+                <!-- ப்ராஜெக்ட் அட்டை 1: Kongu Region Research Center -->
                 <div class="project-card">
                     <img src="https://placehold.co/600x400/4c51bf/e5e7eb?text=Research+Center+Website" alt="Kongu Region Research Center" class="rounded-t-2xl w-full h-48 object-cover">
                     <div class="p-6 space-y-4">
@@ -166,14 +168,16 @@
                             <span class="tag">CSS3</span>
                             <span class="tag">Responsive Design</span>
                         </div>
-                        <!-- Updated link style -->
-                        <a href="https://asiasiva.github.io/Kongu-region-research-center/" target="_blank" rel="noopener noreferrer" class="project-link-button">
-                            View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                        </a>
+                        <!-- பொத்தான் இப்போது புதிய div-உள் உறுதியாக இடதுபுறம் சீரமைக்கப்பட்டுள்ளது -->
+                        <div class="w-full text-left">
+                            <a href="https://asiasiva.github.io/Kongu-region-research-center/" target="_blank" rel="noopener noreferrer" class="project-link-button">
+                                View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Project Card 2: Store/E-commerce Frontend Mockup -->
+                <!-- ப்ராஜெக்ட் அட்டை 2: Store/E-commerce Frontend Mockup -->
                 <div class="project-card">
                     <img src="https://placehold.co/600x400/10b981/e5e7eb?text=Simple+E-commerce+Layout" alt="Store Frontend Mockup" class="rounded-t-2xl w-full h-48 object-cover">
                     <div class="p-6 space-y-4">
@@ -184,29 +188,31 @@
                             <span class="tag">CSS</span>
                             <span class="tag">JavaScript</span>
                         </div>
-                        <!-- Updated link style -->
-                        <a href="https://asiasiva.github.io/Store/" target="_blank" rel="noopener noreferrer" class="project-link-button">
-                            View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                        </a>
+                        <!-- பொத்தான் இப்போது புதிய div-உள் உறுதியாக இடதுபுறம் சீரமைக்கப்பட்டுள்ளது -->
+                        <div class="w-full text-left">
+                            <a href="https://asiasiva.github.io/Store/" target="_blank" rel="noopener noreferrer" class="project-link-button">
+                                View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
             </div>
         </section>
 
-        <!-- Contact Section -->
+        <!-- தொடர்பு பிரிவு -->
         <section id="contact" class="py-20 px-4">
             <h2 class="section-heading">Get In Touch</h2>
             <div class="max-w-3xl mx-auto">
                 <div class="grid md:grid-cols-2 gap-8 mb-12">
-                    <!-- Email Card -->
+                    <!-- மின்னஞ்சல் அட்டை -->
                     <div class="contact-info-card">
                         <i data-lucide="mail" class="icon-primary"></i>
                         <h4 class="text-xl font-semibold text-white">Email Me</h4>
                         <p class="text-gray-400">I respond quickly to professional inquiries.</p>
                         <a href="mailto:uzhavan369@gmail.com" class="text-indigo-400 font-medium hover:text-indigo-300 transition duration-300 break-all">uzhavan369@gmail.com</a>
                     </div>
-                    <!-- Phone Card -->
+                    <!-- தொலைபேசி அட்டை -->
                     <div class="contact-info-card">
                         <i data-lucide="phone" class="icon-primary"></i>
                         <h4 class="text-xl font-semibold text-white">Call or Text</h4>
@@ -215,7 +221,7 @@
                     </div>
                 </div>
 
-                <!-- Contact Form -->
+                <!-- தொடர்பு படிவம் -->
                 <div class="bg-gray-800 p-8 rounded-3xl shadow-2xl border border-gray-700">
                     <p class="text-center text-lg text-gray-300 mb-8">Send me a direct message about your project or opportunity.</p>
                     <form action="#" class="space-y-6">
@@ -243,7 +249,7 @@
         </section>
     </main>
 
-    <!-- Footer -->
+    <!-- அடிக்குறிப்பு -->
     <footer class="bg-gray-900 border-t border-gray-800 mt-20 py-8">
         <div class="container mx-auto px-4 max-w-7xl text-center">
             <p class="text-gray-500 text-sm mb-4">&copy; 2024 Sivakumar T. All rights reserved.</p>
@@ -260,7 +266,7 @@
         </div>
     </footer>
 
-    <!-- CSS Styles for Reusable Components -->
+    <!-- CSS வகுப்புகள் -->
     <style>
         .section-heading {
             @apply text-4xl font-bold text-center text-indigo-400 mb-12;
@@ -286,6 +292,7 @@
         .project-title {
             @apply text-2xl font-bold text-indigo-300;
         }
+        /* project-link-button வகுப்பானது தலைப்புப் பகுதியில் வரையறுக்கப்பட்டுள்ளது */
         .tag {
             @apply bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full font-medium;
         }
@@ -300,12 +307,12 @@
         }
     </style>
 
-    <!-- JavaScript for Interactivity -->
+    <!-- ஊடாடலுக்கான ஜாவாஸ்கிரிப்ட் -->
     <script>
-        // Lucide icon rendering
+        // Lucide icon களை உருவாக்குகிறது
         lucide.createIcons();
 
-        // 1. Mobile Menu Toggle
+        // 1. மொபைல் மெனுவை மாற்றுகிறது
         const menuButton = document.getElementById('menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
@@ -317,7 +324,7 @@
             mobileMenu.classList.toggle('hidden');
         });
 
-        // 2. Typing Effect for Hero Slogan
+        // 2. ஹீரோ முழக்கத்திற்கான தட்டச்சு விளைவு (Typing Effect)
         const slogans = [
             "A Web Developer",
             "A Frontend Enthusiast",
@@ -333,31 +340,31 @@
             const currentSlogan = slogans[sloganIndex % slogans.length];
             
             if (isDeleting) {
-                // Delete mode
+                // நீக்கும் முறை
                 typingTextElement.textContent = currentSlogan.substring(0, charIndex - 1);
                 charIndex--;
-                typingSpeed = 50; // Faster deletion
+                typingSpeed = 50; // வேகமாக நீக்குதல்
             } else {
-                // Typing mode
+                // தட்டச்சு முறை
                 typingTextElement.textContent = currentSlogan.substring(0, charIndex + 1);
                 charIndex++;
-                typingSpeed = 100; // Normal typing speed
+                typingSpeed = 100; // சாதாரண தட்டச்சு வேகம்
             }
 
-            // Check if word is fully typed
+            // வார்த்தை முழுமையாக தட்டச்சு செய்யப்பட்டதா என சரிபார்க்கிறது
             if (!isDeleting && charIndex === currentSlogan.length) {
-                typingSpeed = 2000; // Pause after typing
+                typingSpeed = 2000; // தட்டச்சு செய்த பிறகு நிறுத்தம்
                 isDeleting = true;
             }
             
-            // Check if word is fully deleted
+            // வார்த்தை முழுமையாக நீக்கப்பட்டதா என சரிபார்க்கிறது
             if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 sloganIndex++;
-                typingSpeed = 300; // Pause before starting new word
+                typingSpeed = 300; // புதிய வார்த்தையைத் தொடங்குவதற்கு முன் நிறுத்தம்
             }
 
-            // Apply slight randomization for more natural typing
+            // இயற்கையான தட்டச்சுக்கு சிறிய சீரற்ற தன்மையைப் பயன்படுத்துகிறது
             const delay = typingSpeed + (Math.random() * 50 - 25);
             setTimeout(typeEffect, delay);
         }
