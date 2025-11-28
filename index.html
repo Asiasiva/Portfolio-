@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sivakumar T. - Professional Portfolio</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons -->
+    <script type="module" src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <style>
+        /* Define the font family (Inter is default for Tailwind but explicitly set here) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4f46e5;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-200">
+
+    <!-- Navbar -->
+    <header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-xl border-b border-gray-800">
+        <nav class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
+            <a href="#home" class="text-2xl font-bold text-indigo-400 hover:text-indigo-300 transition duration-300">Sivakumar.T</a>
+            
+            <!-- Desktop Navigation -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button id="menu-button" class="md:hidden text-gray-300 hover:text-indigo-400 focus:outline-none">
+                <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+        </nav>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700">
+            <a href="#home" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 transition duration-300">Home</a>
+            <a href="#about" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 transition duration-300">About</a>
+            <a href="#skills" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 transition duration-300">Skills</a>
+            <a href="#projects" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 transition duration-300">Projects</a>
+            <a href="#contact" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-gray-700 transition duration-300">Contact</a>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+        <!-- Hero Section -->
+        <section id="home" class="h-[80vh] flex items-center justify-center text-center p-4">
+            <div class="space-y-6">
+                <p class="text-xl text-indigo-400 font-medium">Hello, I'm</p>
+                <h1 class="text-5xl sm:text-7xl font-extrabold text-white leading-tight">Sivakumar.T</h1>
+                <p class="text-2xl sm:text-3xl font-light text-gray-400">
+                    <span id="typing-text" class="border-b-4 border-indigo-500/50"></span>
+                </p>
+                <div class="pt-8">
+                    <a href="#projects" class="inline-flex items-center px-10 py-4 text-lg font-bold text-white bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/50 hover:bg-indigo-500 transition duration-300 transform hover:scale-105">
+                        Explore Portfolio
+                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-4">
+            <div class="bg-gray-800 p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-700">
+                <h2 class="section-heading">About Me</h2>
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <!-- Profile Picture with Modern Styling -->
+                    <div class="relative w-full aspect-square md:aspect-auto h-72 md:h-full bg-gray-700 rounded-3xl overflow-hidden shadow-2xl border border-indigo-600/50">
+                        <!-- CORRECTED: Using the contentFetchId for your uploaded image -->
+                        <img 
+                            src="uploaded:1000168568.jpg-7c225155-4d7d-4826-9ef8-02e7e7e794bc" 
+                            alt="Sivakumar T. professional photo" 
+                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                        >
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            I am Sivakumar T., a dedicated and innovative Software Engineer with a passion for building robust and scalable applications. My expertise lies in full-stack development, transitioning ideas into high-performing digital solutions.
+                        </p>
+                        <p class="text-gray-300 text-lg leading-relaxed">
+                            With hands-on experience in web development, I excel in both front-end user experience design and implementing functional back-end logic. I am always eager to adopt new technologies and solve complex problems efficiently. I thrive in collaborative environments and am committed to continuous learning and growth.
+                        </p>
+                        <ul class="list-disc list-inside text-gray-300 text-lg space-y-2 pt-4 border-t border-gray-700 mt-4">
+                            <li><span class="font-semibold text-indigo-300">Focus:</span> Responsive Web Development</li>
+                            <li><span class="font-semibold text-indigo-300">Goal:</span> Building accessible and highly usable digital products.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 px-4">
+            <h2 class="section-heading">Technical Skills</h2>
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
+                <!-- Skill Card 1: Frontend -->
+                <div class="skill-card">
+                    <i data-lucide="layout-grid" class="icon-primary"></i>
+                    <h3 class="skill-title">Frontend</h3>
+                    <p class="skill-description">HTML, CSS, JavaScript, Responsive Design</p>
+                </div>
+                <!-- Skill Card 2: CMS/Tools -->
+                <div class="skill-card">
+                    <i data-lucide="blocks" class="icon-primary"></i>
+                    <h3 class="skill-title">CMS & Tools</h3>
+                    <p class="skill-description">Blogger/Blogspot, Figma, Git, GitHub Pages</p>
+                </div>
+                <!-- Skill Card 3: Templating -->
+                <div class="skill-card">
+                    <i data-lucide="database" class="icon-primary"></i>
+                    <h3 class="skill-title">Templating</h3>
+                    <p class="skill-description">Basic Web Templates, Static Site Generation</p>
+                </div>
+                <!-- Skill Card 4: Design -->
+                <div class="skill-card">
+                    <i data-lucide="palette" class="icon-primary"></i>
+                    <h3 class="skill-title">Design</h3>
+                    <p class="skill-description">UI/UX Principles, Web Aesthetics</p>
+                </div>
+                <!-- Skill Card 5: Core -->
+                <div class="skill-card lg:col-span-1 sm:col-span-3 col-span-2 mx-auto sm:mx-0">
+                    <i data-lucide="code" class="icon-primary"></i>
+                    <h3 class="skill-title">Core</h3>
+                    <p class="skill-description">JavaScript, Python (Beginner), Problem Solving</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4 bg-gray-800/50">
+            <h2 class="section-heading">Featured Projects</h2>
+            <div class="grid md:grid-cols-2 gap-10">
+                
+                <!-- Project Card 1: Kongu Region Research Center -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/4c51bf/e5e7eb?text=Research+Center+Website" alt="Kongu Region Research Center" class="rounded-t-2xl w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <h3 class="project-title">Kongu Region Research Center</h3>
+                        <p class="text-gray-400">A comprehensive static website providing information and resources for a regional research center. Built using responsive HTML and CSS for wide accessibility.</p>
+                        <div class="flex flex-wrap gap-2 text-sm">
+                            <span class="tag">HTML5</span>
+                            <span class="tag">CSS3</span>
+                            <span class="tag">Responsive Design</span>
+                        </div>
+                        <a href="https://asiasiva.github.io/Kongu-region-research-center/" target="_blank" rel="noopener noreferrer" class="project-link">
+                            View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Store/E-commerce Frontend Mockup -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/10b981/e5e7eb?text=Simple+E-commerce+Layout" alt="Store Frontend Mockup" class="rounded-t-2xl w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <h3 class="project-title">Simple Store Frontend</h3>
+                        <p class="text-gray-400">A clean, modern front-end template for a small online store or catalog. Focuses on intuitive product display and mobile-first layout design.</p>
+                        <div class="flex flex-wrap gap-2 text-sm">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                        <a href="https://asiasiva.github.io/Store/" target="_blank" rel="noopener noreferrer" class="project-link">
+                            View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        </a>
+                    </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4">
+            <h2 class="section-heading">Get In Touch</h2>
+            <div class="max-w-3xl mx-auto">
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <!-- Email Card -->
+                    <div class="contact-info-card">
+                        <i data-lucide="mail" class="icon-primary"></i>
+                        <h4 class="text-xl font-semibold text-white">Email Me</h4>
+                        <p class="text-gray-400">I respond quickly to professional inquiries.</p>
+                        <a href="mailto:uzhavan369@gmail.com" class="text-indigo-400 font-medium hover:text-indigo-300 transition duration-300 break-all">uzhavan369@gmail.com</a>
+                    </div>
+                    <!-- Phone Card -->
+                    <div class="contact-info-card">
+                        <i data-lucide="phone" class="icon-primary"></i>
+                        <h4 class="text-xl font-semibold text-white">Call or Text</h4>
+                        <p class="text-gray-400">Feel free to reach out during business hours (IST).</p>
+                        <a href="tel:+918667001677" class="text-indigo-400 font-medium hover:text-indigo-300 transition duration-300">+91 86670 01677</a>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="bg-gray-800 p-8 rounded-3xl shadow-2xl border border-gray-700">
+                    <p class="text-center text-lg text-gray-300 mb-8">Send me a direct message about your project or opportunity.</p>
+                    <form action="#" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Your Name" class="input-field">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                            <input type="email" id="email" name="email" value="uzhavan369@gmail.com (Placeholder)" readonly class="input-field cursor-not-allowed opacity-75">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Your message..." class="input-field"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-3 text-lg font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-500 transition duration-300 transform hover:scale-[1.005] shadow-lg">
+                            Send Message
+                        </button>
+                        <p class="text-xs text-center text-gray-500 mt-4">
+                            (Note: This is a static portfolio; the form submission is not active.)
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 border-t border-gray-800 mt-20 py-8">
+        <div class="container mx-auto px-4 max-w-7xl text-center">
+            <p class="text-gray-500 text-sm mb-4">&copy; 2024 Sivakumar T. All rights reserved.</p>
+            <div class="flex justify-center space-x-6">
+                <!-- GitHub -->
+                <a href="https://github.com/asiasiva" target="_blank" rel="noopener noreferrer" class="social-link"><i data-lucide="github" class="w-6 h-6"></i></a>
+                <!-- LinkedIn (Placeholder) -->
+                <a href="#" class="social-link"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
+                <!-- Email -->
+                <a href="mailto:uzhavan369@gmail.com" class="social-link"><i data-lucide="mail" class="w-6 h-6"></i></a>
+                <!-- Phone -->
+                <a href="tel:+918667001677" class="social-link"><i data-lucide="phone" class="w-6 h-6"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CSS Styles for Reusable Components -->
+    <style>
+        .section-heading {
+            @apply text-4xl font-bold text-center text-indigo-400 mb-12;
+        }
+        .nav-link {
+            @apply text-gray-300 hover:text-indigo-400 transition duration-300 font-medium;
+        }
+        .icon-primary {
+            @apply w-8 h-8 text-indigo-400 mb-3;
+        }
+        .skill-card {
+            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-lg transition duration-300 hover:bg-gray-700/70 hover:shadow-indigo-500/50 border border-gray-700;
+        }
+        .skill-title {
+            @apply text-xl font-semibold text-white mb-2;
+        }
+        .skill-description {
+            @apply text-gray-400 text-sm;
+        }
+        .project-card {
+            @apply bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition duration-330 hover:shadow-indigo-500/50 border border-gray-700;
+        }
+        .project-title {
+            @apply text-2xl font-bold text-indigo-300;
+        }
+        .project-link {
+            @apply text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center mt-3;
+        }
+        .tag {
+            @apply bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full font-medium;
+        }
+        .input-field {
+            @apply w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 outline-none;
+        }
+        .contact-info-card {
+            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-xl border border-indigo-700/30 space-y-2;
+        }
+        .social-link {
+            @apply text-gray-400 hover:text-indigo-400 transition duration-300;
+        }
+    </style>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Lucide icon rendering
+        lucide.createIcons();
+
+        // 1. Mobile Menu Toggle
+        const menuButton = document.getElementById('menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        function closeMenu() {
+            mobileMenu.classList.add('hidden');
+        }
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 2. Typing Effect for Hero Slogan
+        const slogans = [
+            "A Web Developer",
+            "A Frontend Enthusiast",
+            "Committed to Responsive Design"
+        ];
+        const typingTextElement = document.getElementById('typing-text');
+        let sloganIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeEffect() {
+            const currentSlogan = slogans[sloganIndex % slogans.length];
+            
+            if (isDeleting) {
+                // Delete mode
+                typingTextElement.textContent = currentSlogan.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 50; // Faster deletion
+            } else {
+                // Typing mode
+                typingTextElement.textContent = currentSlogan.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 100; // Normal typing speed
+            }
+
+            // Check if word is fully typed
+            if (!isDeleting && charIndex === currentSlogan.length) {
+                typingSpeed = 2000; // Pause after typing
+                isDeleting = true;
+            }
+            
+            // Check if word is fully deleted
+            if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                sloganIndex++;
+                typingSpeed = 300; // Pause before starting new word
+            }
+
+            // Apply slight randomization for more natural typing
+            const delay = typingSpeed + (Math.random() * 50 - 25);
+            setTimeout(typeEffect, delay);
+        }
+
+        window.onload = function() {
+            typeEffect();
+        };
+
+    </script>
+</body>
+</html>
+
+  
