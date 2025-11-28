@@ -7,7 +7,7 @@
     <!-- Tailwind CSS ஐ ஏற்றுகிறது -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icon களை ஏற்றுகிறது -->
-    <script type="module" src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
     <style>
         /* எழுத்துரு குடும்பத்தை அமைக்கிறது (Inter) */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
@@ -26,10 +26,54 @@
         ::-webkit-scrollbar-track {
             background: #1f2937;
         }
-        /* ப்ராஜெக்ட் லிங்க் பொத்தானின் மேம்படுத்தப்பட்ட வடிவம் */
+
+        /* பிரகாசிக்கும் விளைவுக்கான கீஃப்ரேம்கள் (CSS Animation) */
+        @keyframes glow {
+            0% { box-shadow: 0 0 5px rgba(79, 70, 229, 0.4); }
+            50% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.8), 0 0 30px rgba(139, 92, 246, 0.6); }
+            100% { box-shadow: 0 0 5px rgba(79, 70, 229, 0.4); }
+        }
+        
+        /* ப்ராஜெக்ட் லிங்க் பொத்தானின் புதிய, Glow வடிவமைப்பு */
         .project-link-button {
-            /* பொத்தானின் வடிவமைப்பு: எழுத்துரு, பேடிங், நிறம் மற்றும் நிழல் */
-            @apply inline-flex items-center px-6 py-3 text-lg font-semibold text-white bg-indigo-600 rounded-xl shadow-lg transition duration-300 transform hover:scale-[1.03] hover:bg-indigo-500 mt-4;
+            /* புதிய வடிவமைப்பு: பிரகாசம் மற்றும் முழு வளைவு */
+            @apply flex items-center justify-center w-full px-8 py-3 text-lg font-bold text-white 
+                   bg-indigo-700 rounded-full 
+                   transition duration-300 ease-in-out
+                   transform hover:scale-105 hover:bg-indigo-600; 
+            
+            /* பிரகாச அனிமேஷனைச் சேர்க்கிறது */
+            animation: glow 3s infinite alternate;
+            border: 1px solid #4f46e5; /* நீல நிற விளிம்பு */
+        }
+
+        /* மற்ற அடிப்படை வகுப்புகள் */
+        .section-heading {
+            @apply text-4xl font-bold text-center text-indigo-400 mb-12;
+        }
+        .nav-link {
+            @apply text-gray-300 hover:text-indigo-400 transition duration-300 font-medium;
+        }
+        .icon-primary {
+            @apply w-8 h-8 text-indigo-400 mb-3;
+        }
+        .skill-card {
+            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-lg transition duration-300 hover:bg-gray-700/70 hover:shadow-indigo-500/50 border border-gray-700;
+        }
+        .project-card {
+            @apply bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition duration-330 hover:shadow-indigo-500/50 border border-gray-700;
+        }
+        .tag {
+            @apply bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full font-medium;
+        }
+        .input-field {
+            @apply w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 outline-none;
+        }
+        .contact-info-card {
+            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-xl border border-indigo-700/30 space-y-2;
+        }
+        .social-link {
+            @apply text-gray-400 hover:text-indigo-400 transition duration-300;
         }
     </style>
 </head>
@@ -75,7 +119,12 @@
                     <span id="typing-text" class="border-b-4 border-indigo-500/50"></span>
                 </p>
                 <div class="pt-8">
-                    <a href="#projects" class="inline-flex items-center px-10 py-4 text-lg font-bold text-white bg-indigo-600 rounded-full shadow-lg shadow-indigo-500/50 hover:bg-indigo-500 transition duration-300 transform hover:scale-105">
+                    <!-- ஹீரோ பிரிவில் உள்ள பொத்தான் புதிய வடிவத்தில் மாற்றப்பட்டுள்ளது -->
+                    <a href="#projects" class="inline-flex items-center px-10 py-4 text-lg font-bold text-white 
+                       bg-indigo-600 
+                       rounded-full shadow-lg shadow-indigo-500/50 
+                       hover:bg-indigo-500 
+                       transition duration-300 transform hover:scale-105">
                         Explore Portfolio
                         <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
                     </a>
@@ -168,10 +217,11 @@
                             <span class="tag">CSS3</span>
                             <span class="tag">Responsive Design</span>
                         </div>
-                        <!-- பொத்தான் இப்போது புதிய div-உள் உறுதியாக இடதுபுறம் சீரமைக்கப்பட்டுள்ளது -->
-                        <div class="w-full text-left">
-                            <a href="https://asiasiva.github.io/Kongu-region-research-center/" target="_blank" rel="noopener noreferrer" class="project-link-button">
-                                View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        <!-- இங்கே "Project Live" மற்றும் புதிய project-link-button வகுப்பு பயன்படுத்தப்பட்டுள்ளது -->
+                        <div class="mt-6">
+                            <a href="https://asiasiva.github.io/Kongu-region-research-center/" target="_blank" rel="noopener noreferrer" 
+                               class="project-link-button">
+                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -188,10 +238,11 @@
                             <span class="tag">CSS</span>
                             <span class="tag">JavaScript</span>
                         </div>
-                        <!-- பொத்தான் இப்போது புதிய div-உள் உறுதியாக இடதுபுறம் சீரமைக்கப்பட்டுள்ளது -->
-                        <div class="w-full text-left">
-                            <a href="https://asiasiva.github.io/Store/" target="_blank" rel="noopener noreferrer" class="project-link-button">
-                                View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                        <!-- இங்கே "Project Live" மற்றும் புதிய project-link-button வகுப்பு பயன்படுத்தப்பட்டுள்ளது -->
+                        <div class="mt-6">
+                            <a href="https://asiasiva.github.io/Store/" target="_blank" rel="noopener noreferrer" 
+                               class="project-link-button">
+                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                             </a>
                         </div>
                     </div>
@@ -203,8 +254,9 @@
         <!-- தொடர்பு பிரிவு -->
         <section id="contact" class="py-20 px-4">
             <h2 class="section-heading">Get In Touch</h2>
+            <!-- தொடர்பு அட்டைகள் மட்டுமே மையப்படுத்தப்பட்டு, ஒட்டுமொத்த பிரிவின் இடைவெளி குறைக்கப்பட்டுள்ளது -->
             <div class="max-w-3xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                <div class="grid md:grid-cols-2 gap-8">
                     <!-- மின்னஞ்சல் அட்டை -->
                     <div class="contact-info-card">
                         <i data-lucide="mail" class="icon-primary"></i>
@@ -219,31 +271,6 @@
                         <p class="text-gray-400">Feel free to reach out during business hours (IST).</p>
                         <a href="tel:+918667001677" class="text-indigo-400 font-medium hover:text-indigo-300 transition duration-300">+91 86670 01677</a>
                     </div>
-                </div>
-
-                <!-- தொடர்பு படிவம் -->
-                <div class="bg-gray-800 p-8 rounded-3xl shadow-2xl border border-gray-700">
-                    <p class="text-center text-lg text-gray-300 mb-8">Send me a direct message about your project or opportunity.</p>
-                    <form action="#" class="space-y-6">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-400 mb-2">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" class="input-field">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-400 mb-2">Email</label>
-                            <input type="email" id="email" name="email" value="uzhavan369@gmail.com (Placeholder)" readonly class="input-field cursor-not-allowed opacity-75">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-400 mb-2">Message</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Your message..." class="input-field"></textarea>
-                        </div>
-                        <button type="submit" class="w-full py-3 text-lg font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-500 transition duration-300 transform hover:scale-[1.005] shadow-lg">
-                            Send Message
-                        </button>
-                        <p class="text-xs text-center text-gray-500 mt-4">
-                            (Note: This is a static portfolio; the form submission is not active.)
-                        </p>
-                    </form>
                 </div>
             </div>
         </section>
@@ -266,52 +293,19 @@
         </div>
     </footer>
 
-    <!-- CSS வகுப்புகள் -->
-    <style>
-        .section-heading {
-            @apply text-4xl font-bold text-center text-indigo-400 mb-12;
-        }
-        .nav-link {
-            @apply text-gray-300 hover:text-indigo-400 transition duration-300 font-medium;
-        }
-        .icon-primary {
-            @apply w-8 h-8 text-indigo-400 mb-3;
-        }
-        .skill-card {
-            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-lg transition duration-300 hover:bg-gray-700/70 hover:shadow-indigo-500/50 border border-gray-700;
-        }
-        .skill-title {
-            @apply text-xl font-semibold text-white mb-2;
-        }
-        .skill-description {
-            @apply text-gray-400 text-sm;
-        }
-        .project-card {
-            @apply bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition duration-330 hover:shadow-indigo-500/50 border border-gray-700;
-        }
-        .project-title {
-            @apply text-2xl font-bold text-indigo-300;
-        }
-        /* project-link-button வகுப்பானது தலைப்புப் பகுதியில் வரையறுக்கப்பட்டுள்ளது */
-        .tag {
-            @apply bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full font-medium;
-        }
-        .input-field {
-            @apply w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 outline-none;
-        }
-        .contact-info-card {
-            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-xl border border-indigo-700/30 space-y-2;
-        }
-        .social-link {
-            @apply text-gray-400 hover:text-indigo-400 transition duration-300;
-        }
-    </style>
-
     <!-- ஊடாடலுக்கான ஜாவாஸ்கிரிப்ட் -->
     <script>
         // Lucide icon களை உருவாக்குகிறது
-        lucide.createIcons();
-
+        function initializeIcons() {
+            // Lucide சரியாக ஏற்றப்பட்டிருந்தால் மட்டுமே createIcons-ஐ அழைக்கும்.
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            } else {
+                // Lucide இன்னும் ஏற்றப்படவில்லை என்றால் சிறிது நேரம் காத்திருந்து மீண்டும் முயற்சிக்கவும்
+                setTimeout(initializeIcons, 100);
+            }
+        }
+        
         // 1. மொபைல் மெனுவை மாற்றுகிறது
         const menuButton = document.getElementById('menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -370,6 +364,8 @@
         }
 
         window.onload = function() {
+            // ஐகான் தொடக்கத்தை உறுதிசெய்கிறது
+            initializeIcons();
             typeEffect();
         };
 
