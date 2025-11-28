@@ -26,6 +26,10 @@
         ::-webkit-scrollbar-track {
             background: #1f2937;
         }
+        /* New style for enhanced project link button */
+        .project-link-button {
+            @apply inline-flex items-center px-4 py-2 font-medium text-white bg-indigo-600 rounded-lg shadow-md transition duration-300 transform hover:scale-105 hover:bg-indigo-500;
+        }
     </style>
 </head>
 <body class="bg-gray-900 text-gray-200">
@@ -83,13 +87,13 @@
             <div class="bg-gray-800 p-8 md:p-12 rounded-3xl shadow-2xl border border-gray-700">
                 <h2 class="section-heading">About Me</h2>
                 <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <!-- Profile Picture with Modern Styling -->
+                    <!-- Profile Picture with Modern Styling (Image source corrected) -->
                     <div class="relative w-full aspect-square md:aspect-auto h-72 md:h-full bg-gray-700 rounded-3xl overflow-hidden shadow-2xl border border-indigo-600/50">
-                        <!-- CORRECTED: Using the contentFetchId for your uploaded image -->
                         <img 
                             src="uploaded:1000168568.jpg-7c225155-4d7d-4826-9ef8-02e7e7e794bc" 
                             alt="Sivakumar T. professional photo" 
                             class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
+                            onerror="this.onerror=null; this.src='https://placehold.co/400x400/374151/FFFFFF?text=Siva+T'"
                         >
                     </div>
                     
@@ -162,8 +166,9 @@
                             <span class="tag">CSS3</span>
                             <span class="tag">Responsive Design</span>
                         </div>
-                        <a href="https://asiasiva.github.io/Kongu-region-research-center/" target="_blank" rel="noopener noreferrer" class="project-link">
-                            View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        <!-- Updated link style -->
+                        <a href="https://asiasiva.github.io/Kongu-region-research-center/" target="_blank" rel="noopener noreferrer" class="project-link-button">
+                            View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -179,8 +184,9 @@
                             <span class="tag">CSS</span>
                             <span class="tag">JavaScript</span>
                         </div>
-                        <a href="https://asiasiva.github.io/Store/" target="_blank" rel="noopener noreferrer" class="project-link">
-                            View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-1"></i>
+                        <!-- Updated link style -->
+                        <a href="https://asiasiva.github.io/Store/" target="_blank" rel="noopener noreferrer" class="project-link-button">
+                            View Live Project <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                         </a>
                     </div>
                 </div>
@@ -280,9 +286,6 @@
         .project-title {
             @apply text-2xl font-bold text-indigo-300;
         }
-        .project-link {
-            @apply text-indigo-400 hover:text-indigo-300 font-medium inline-flex items-center mt-3;
-        }
         .tag {
             @apply bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full font-medium;
         }
@@ -367,4 +370,3 @@
 </body>
 </html>
 
-  
