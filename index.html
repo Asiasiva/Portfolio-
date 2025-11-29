@@ -20,7 +20,8 @@
             width: 8px;
         }
         ::-webkit-scrollbar-thumb {
-            background: #4f46e5;
+            /* தங்க நிறம் */
+            background: #f59e0b; 
             border-radius: 4px;
         }
         ::-webkit-scrollbar-track {
@@ -29,51 +30,57 @@
 
         /* பிரகாசிக்கும் விளைவுக்கான கீஃப்ரேம்கள் (CSS Animation) */
         @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(79, 70, 229, 0.4); }
-            50% { box-shadow: 0 0 20px rgba(79, 70, 229, 0.8), 0 0 30px rgba(139, 92, 246, 0.6); }
-            100% { box-shadow: 0 0 5px rgba(79, 70, 229, 0.4); }
+            /* தங்க நிற பிரகாசம் */
+            0% { box-shadow: 0 0 5px rgba(252, 211, 77, 0.4); } /* Amber-300 */
+            50% { box-shadow: 0 0 20px rgba(252, 211, 77, 0.8), 0 0 30px rgba(251, 191, 36, 0.6); } /* Amber-500 */
+            100% { box-shadow: 0 0 5px rgba(252, 211, 77, 0.4); }
         }
         
         /* ப்ராஜெக்ட் லிங்க் பொத்தானின் புதிய, Glow வடிவமைப்பு */
         .project-link-button {
             /* புதிய வடிவமைப்பு: பிரகாசம் மற்றும் முழு வளைவு */
             @apply flex items-center justify-center w-full px-8 py-3 text-lg font-bold text-white 
-                   bg-indigo-700 rounded-full 
+                   bg-amber-600 rounded-full /* பின்னணி தங்க நிறம் */
                    transition duration-300 ease-in-out
-                   transform hover:scale-105 hover:bg-indigo-600; 
+                   transform hover:scale-105 hover:bg-amber-500; 
             
             /* பிரகாச அனிமேஷனைச் சேர்க்கிறது */
             animation: glow 3s infinite alternate;
-            border: 1px solid #4f46e5; /* நீல நிற விளிம்பு */
+            border: 1px solid #f59e0b; /* தங்க நிற விளிம்பு (Amber-500) */
         }
 
         /* மற்ற அடிப்படை வகுப்புகள் */
         .section-heading {
-            @apply text-4xl font-bold text-center text-indigo-400 mb-12;
+            /* எழுத்து தலைப்பு: தங்க நிறம் */
+            @apply text-4xl font-bold text-center text-amber-400 mb-12;
         }
         .nav-link {
-            @apply text-gray-300 hover:text-indigo-400 transition duration-300 font-medium;
+            /* வழிசெலுத்தல் இணைப்புகள்: தங்க நிறம் */
+            @apply text-gray-300 hover:text-amber-400 transition duration-300 font-medium;
         }
         .icon-primary {
-            @apply w-8 h-8 text-indigo-400 mb-3;
+            /* ஐகான் நிறம்: தங்க நிறம் */
+            @apply w-8 h-8 text-amber-400 mb-3;
         }
         .skill-card {
-            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-lg transition duration-300 hover:bg-gray-700/70 hover:shadow-indigo-500/50 border border-gray-700;
+            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-lg transition duration-300 hover:bg-gray-700/70 hover:shadow-amber-500/50 border border-gray-700;
         }
         .project-card {
-            @apply bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition duration-330 hover:shadow-indigo-500/50 border border-gray-700;
+            @apply bg-gray-800 rounded-2xl shadow-2xl overflow-hidden transition duration-330 hover:shadow-amber-500/50 border border-gray-700;
         }
         .tag {
-            @apply bg-indigo-900/50 text-indigo-300 px-3 py-1 rounded-full font-medium;
+            /* டேக் நிறம்: தங்க நிற பின்னணி */
+            @apply bg-amber-900/50 text-amber-300 px-3 py-1 rounded-full font-medium;
         }
         .input-field {
-            @apply w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 outline-none;
+            @apply w-full p-3 bg-gray-700 border border-gray-600 rounded-lg text-white focus:ring-amber-500 focus:border-amber-500 transition duration-200 outline-none;
         }
         .contact-info-card {
-            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-xl border border-indigo-700/30 space-y-2;
+            /* தொடர்பு அட்டை விளிம்பு: தங்க நிறம் */
+            @apply bg-gray-800 p-6 rounded-2xl text-center shadow-xl border border-amber-700/30 space-y-2;
         }
         .social-link {
-            @apply text-gray-400 hover:text-indigo-400 transition duration-300;
+            @apply text-gray-400 hover:text-amber-400 transition duration-300;
         }
     </style>
 </head>
@@ -82,7 +89,7 @@
     <!-- Navbar -->
     <header class="sticky top-0 z-50 bg-gray-900/95 backdrop-blur-sm shadow-xl border-b border-gray-800">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
-            <a href="#home" class="text-2xl font-bold text-indigo-400 hover:text-indigo-300 transition duration-300">Sivakumar.T</a>
+            <a href="#home" class="text-2xl font-bold text-amber-400 hover:text-amber-300 transition duration-300">Sivakumar.T</a>
             
             <!-- டெஸ்க்டாப் வழிசெலுத்தல் -->
             <div class="hidden md:flex space-x-6">
@@ -94,7 +101,7 @@
             </div>
 
             <!-- மொபைல் மெனு பொத்தான் -->
-            <button id="menu-button" class="md:hidden text-gray-300 hover:text-indigo-400 focus:outline-none">
+            <button id="menu-button" class="md:hidden text-gray-300 hover:text-amber-400 focus:outline-none">
                 <i data-lucide="menu" class="w-6 h-6"></i>
             </button>
         </nav>
@@ -113,17 +120,17 @@
         <!-- ஹீரோ பிரிவு -->
         <section id="home" class="h-[80vh] flex items-center justify-center text-center p-4">
             <div class="space-y-6">
-                <p class="text-xl text-indigo-400 font-medium">Hello, I'm</p>
+                <p class="text-xl text-amber-400 font-medium">Hello, I'm</p>
                 <h1 class="text-5xl sm:text-7xl font-extrabold text-white leading-tight">Sivakumar.T</h1>
                 <p class="text-2xl sm:text-3xl font-light text-gray-400">
-                    <span id="typing-text" class="border-b-4 border-indigo-500/50"></span>
+                    <span id="typing-text" class="border-b-4 border-amber-500/50"></span>
                 </p>
                 <div class="pt-8">
-                    <!-- ஹீரோ பிரிவில் உள்ள பொத்தான் புதிய வடிவத்தில் மாற்றப்பட்டுள்ளது -->
+                    <!-- ஹீரோ பிரிவில் உள்ள பொத்தான் தங்க நிறத்தில் மாற்றப்பட்டுள்ளது -->
                     <a href="#projects" class="inline-flex items-center px-10 py-4 text-lg font-bold text-white 
-                       bg-indigo-600 
-                       rounded-full shadow-lg shadow-indigo-500/50 
-                       hover:bg-indigo-500 
+                       bg-amber-600 
+                       rounded-full shadow-lg shadow-amber-500/50 
+                       hover:bg-amber-500 
                        transition duration-300 transform hover:scale-105">
                         Explore Portfolio
                         <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
@@ -138,7 +145,7 @@
                 <h2 class="section-heading">About Me</h2>
                 <div class="grid md:grid-cols-2 gap-12 items-center">
                     <!-- ப்ரொஃபைல் படம் -->
-                    <div class="relative w-full aspect-square md:aspect-auto h-72 md:h-full bg-gray-700 rounded-3xl overflow-hidden shadow-2xl border border-indigo-600/50">
+                    <div class="relative w-full aspect-square md:aspect-auto h-72 md:h-full bg-gray-700 rounded-3xl overflow-hidden shadow-2xl border border-amber-600/50">
                         <!-- பதிவேற்றிய படத்தின் மூலத்தை பயன்படுத்துகிறது. படம் தெரியாததால், onerror fallback உள்ளது. -->
                         <img 
                             src="uploaded:1000168568.jpg-7c225155-4d7d-4826-9ef8-02e7e7e794bc" 
@@ -156,8 +163,8 @@
                             With hands-on experience in web development, I excel in both front-end user experience design and implementing functional back-end logic. I am always eager to adopt new technologies and solve complex problems efficiently. I thrive in collaborative environments and am committed to continuous learning and growth.
                         </p>
                         <ul class="list-disc list-inside text-gray-300 text-lg space-y-2 pt-4 border-t border-gray-700 mt-4">
-                            <li><span class="font-semibold text-indigo-300">Focus:</span> Responsive Web Development</li>
-                            <li><span class="font-semibold text-indigo-300">Goal:</span> Building accessible and highly usable digital products.</li>
+                            <li><span class="font-semibold text-amber-300">Focus:</span> Responsive Web Development</li>
+                            <li><span class="font-semibold text-amber-300">Goal:</span> Building accessible and highly usable digital products.</li>
                         </ul>
                     </div>
                 </div>
@@ -269,7 +276,7 @@
                     </div>
                 </div>
 
-                <!-- ப்ராஜெக்ட் அட்டை 4: Isha Foundation Layout (New Addition) -->
+                <!-- ப்ராஜெக்ட் அட்டை 4: Isha Foundation Layout -->
                 <div class="project-card">
                     <img src="https://placehold.co/600x400/ff9900/e5e7eb?text=Isha+Foundation+Layout" alt="Isha Foundation Layout" class="rounded-t-2xl w-full h-48 object-cover">
                     <div class="p-6 space-y-4">
@@ -283,6 +290,27 @@
                         <!-- இங்கே "Project Live" மற்றும் புதிய project-link-button வகுப்பு பயன்படுத்தப்பட்டுள்ளது -->
                         <div class="mt-6">
                             <a href="https://asiasiva.github.io/Isha/" target="_blank" rel="noopener noreferrer" 
+                               class="project-link-button">
+                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ப்ராஜெக்ட் அட்டை 5: Mazhai-Udumalai -->
+                <div class="project-card">
+                    <img src="https://placehold.co/600x400/10b981/e5e7eb?text=Mazhai+Udumalai+Project" alt="Mazhai-Udumalai Project" class="rounded-t-2xl w-full h-48 object-cover">
+                    <div class="p-6 space-y-4">
+                        <h3 class="project-title">Mazhai-Udumalai Web Portal</h3>
+                        <p class="text-gray-400">A web project, potentially related to rainfall or local data for Udumalai, showcasing data presentation and regional focus in a clear layout.</p>
+                        <div class="flex flex-wrap gap-2 text-sm">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">Data Presentation</span>
+                        </div>
+                        <!-- இங்கே "Project Live" மற்றும் புதிய project-link-button வகுப்பு பயன்படுத்தப்பட்டுள்ளது -->
+                        <div class="mt-6">
+                            <a href="https://asiasiva.github.io/Mazhai-Udumalai/" target="_blank" rel="noopener noreferrer" 
                                class="project-link-button">
                                 Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
                             </a>
@@ -305,14 +333,14 @@
                         <i data-lucide="mail" class="icon-primary"></i>
                         <h4 class="text-xl font-semibold text-white">Email Me</h4>
                         <p class="text-gray-400">I respond quickly to professional inquiries.</p>
-                        <a href="mailto:uzhavan369@gmail.com" class="text-indigo-400 font-medium hover:text-indigo-300 transition duration-300 break-all">uzhavan369@gmail.com</a>
+                        <a href="mailto:uzhavan369@gmail.com" class="text-amber-400 font-medium hover:text-amber-300 transition duration-300 break-all">uzhavan369@gmail.com</a>
                     </div>
                     <!-- தொலைபேசி அட்டை -->
                     <div class="contact-info-card">
                         <i data-lucide="phone" class="icon-primary"></i>
                         <h4 class="text-xl font-semibold text-white">Call or Text</h4>
                         <p class="text-gray-400">Feel free to reach out during business hours (IST).</p>
-                        <a href="tel:+918667001677" class="text-indigo-400 font-medium hover:text-indigo-300 transition duration-300">+91 86670 01677</a>
+                        <a href="tel:+918667001677" class="text-amber-400 font-medium hover:text-amber-300 transition duration-300">+91 86670 01677</a>
                     </div>
                 </div>
             </div>
@@ -338,8 +366,6 @@
 
     <!-- ஊடாடலுக்கான ஜாவாஸ்கிரிப்ட் -->
     <script>
-        // Google Sheet தொடர்புடைய அனைத்து குறியீடுகளும் (URL, form submit function, config toggle function) நீக்கப்பட்டுள்ளன.
-        
         // Lucide icon களை உருவாக்குகிறது
         function initializeIcons() {
             // Lucide சரியாக ஏற்றப்பட்டிருந்தால் மட்டுமே createIcons-ஐ அழைக்கும்.
@@ -417,3 +443,4 @@
     </script>
 </body>
 </html>
+
