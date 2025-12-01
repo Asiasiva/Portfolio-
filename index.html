@@ -1,500 +1,1060 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sivakumar T. - Professional Portfolio</title>
-    <!-- Tailwind CSS ஐ ஏற்றுகிறது -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Lucide Icon களை ஏற்றுகிறது -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
-    <style>
-        /* எழுத்துரு குடும்பத்தை அமைக்கிறது (Manrope) */
-        @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
-        
-        /* பிரகாசமான ஹீரோ தலைப்புக்கான கீஃப்ரேம்கள் (Teal Shadow) */
-        @keyframes text-glow {
-            0% { text-shadow: 0 0 5px rgba(45, 212, 191, 0.4); } /* cyan-400 */
-            100% { text-shadow: 0 0 15px rgba(45, 212, 191, 0.7); }
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sivakumar T · Portfolio</title>
 
-        body {
-            font-family: 'Manrope', sans-serif;
-            scroll-behavior: smooth;
-            /* Soft Dark Background (Zinc-900) */
-            background: #18181b; 
-        }
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
-        /* ஸ்க்ரோல்பார் தோற்றத்தை தனிப்பயனாக்குகிறது */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-thumb {
-            /* நீலப் பச்சை நிறம் */
-            background: #14b8a6; /* teal-500 */
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #27272a; /* zinc-800 */
-        }
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
-        /* பொத்தான் பிரகாசிக்கும் விளைவுக்கான கீஃப்ரேம்கள் (Teal Glow) */
-        @keyframes glow {
-            0% { box-shadow: 0 0 5px rgba(45, 212, 191, 0.4); } 
-            50% { box-shadow: 0 0 20px rgba(45, 212, 191, 0.8), 0 0 30px rgba(20, 184, 166, 0.6); } /* cyan-400/teal-500 */
-            100% { box-shadow: 0 0 5px rgba(45, 212, 191, 0.4); }
-        }
-        
-        /* ப்ராஜெக்ட் லிங்க் பொத்தானின் புதிய, Glow வடிவமைப்பு */
-        .project-link-button {
-            @apply flex items-center justify-center w-full px-8 py-3 text-lg font-bold text-black 
-                   bg-cyan-400 rounded-full 
-                   transition duration-300 ease-in-out
-                   transform hover:scale-105 active:scale-95 hover:bg-cyan-300; 
-            
-            animation: glow 3s infinite alternate;
-            border: 1px solid #22d3ee; /* cyan-400 */
-        }
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
 
-        /* புதிய Neumorphism-style Card Design (Soft Inset Look) */
-        .project-card, .skill-card, .contact-info-card {
-            /* பின்னணி அடிப்படை நிறம் */
-            background-color: #27272a; /* zinc-800 */
-            /* மென்மையான Inset shadows */
-            box-shadow: inset 5px 5px 10px rgba(0, 0, 0, 0.5), inset -5px -5px 10px rgba(50, 50, 50, 0.3);
-            border: 1px solid #3f3f46; /* zinc-700 for definition */
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .project-card:hover, .skill-card:hover, .contact-info-card:hover {
-            transform: translateY(-2px); /* லேசாக மேலெழும்பும் */
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
-        }
-        
-        /* மற்ற அடிப்படை வகுப்புகள் */
-        .section-heading {
-            /* எழுத்து தலைப்பு: நீலப் பச்சை நிறம் */
-            @apply text-4xl font-bold text-center text-cyan-400 mb-10; /* mb-12 -> mb-10 */
-        }
-        /* பிரகாசமான ஹீரோ தலைப்பு */
-        #hero-title {
-            animation: text-glow 2s infinite alternate;
-        }
+  <style>
+    :root {
+      color-scheme: dark;
+    }
 
-        .nav-link {
-            /* வழிசெலுத்தல் இணைப்புகள்: நீலப் பச்சை நிறம் */
-            @apply text-gray-300 hover:text-cyan-400 transition duration-300 font-medium;
-        }
-        .icon-primary {
-            /* ஐகான் நிறம்: நீலப் பச்சை நிறம் */
-            @apply w-8 h-8 text-cyan-400 mb-3;
-        }
-        .tag {
-            /* டேக் நிறம்: நீலப் பச்சை பின்னணி */
-            @apply bg-cyan-900/50 text-cyan-300 px-3 py-1 rounded-full font-medium;
-        }
-        .input-field {
-            @apply w-full p-3 bg-gray-700/70 border border-gray-600 rounded-lg text-white focus:ring-cyan-500 focus:border-cyan-500 transition duration-200 outline-none;
-        }
-        .social-link {
-            @apply text-gray-400 hover:text-cyan-400 transition duration-300;
-        }
-    </style>
+    body {
+      font-family: "Manrope", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      scroll-behavior: smooth;
+      background: radial-gradient(circle at top, #0f172a 0, #020617 45%, #020617 100%);
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #22d3ee;
+      border-radius: 999px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #020617;
+    }
+
+    /* Hero title glow */
+    @keyframes text-glow {
+      0% {
+        text-shadow: 0 0 8px rgba(45, 212, 191, 0.4),
+          0 0 20px rgba(56, 189, 248, 0.1);
+      }
+      100% {
+        text-shadow: 0 0 18px rgba(45, 212, 191, 0.9),
+          0 0 35px rgba(56, 189, 248, 0.5);
+      }
+    }
+
+    .hero-title-glow {
+      animation: text-glow 2.2s ease-in-out infinite alternate;
+    }
+
+    /* Floating pill behind hero */
+    .hero-orbit {
+      background: radial-gradient(circle at top left, #22d3ee33, transparent 55%),
+        radial-gradient(circle at bottom right, #4f46e533, transparent 55%);
+    }
+
+    /* Section reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+    }
+    .reveal-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Glass card */
+    .glass-card {
+      background: radial-gradient(circle at top left, #22d3ee1c, transparent 60%),
+        rgba(24, 24, 27, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.3);
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(24px);
+    }
+
+    /* Neon border on hover */
+    .card-hover {
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+        box-shadow 0.35s ease, border-color 0.25s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 60px rgba(8, 47, 73, 0.9);
+      border-color: rgba(56, 189, 248, 0.55);
+    }
+
+    /* Glow divider under section headings */
+    .section-glow {
+      box-shadow: 0 0 18px rgba(34, 211, 238, 0.7);
+    }
+
+    /* Typing caret */
+    .typing-caret::after {
+      content: "";
+      display: inline-block;
+      width: 2px;
+      height: 1.1em;
+      margin-left: 4px;
+      background: #22d3ee;
+      animation: caret 0.9s steps(1) infinite;
+    }
+    @keyframes caret {
+      0%, 49% {
+        opacity: 1;
+      }
+      50%, 100% {
+        opacity: 0;
+      }
+    }
+
+    /* Hero tilt */
+    .tilt {
+      transition: transform 0.25s ease-out;
+      will-change: transform;
+    }
+
+    /* Footer glow */
+    .footer-glow {
+      box-shadow: 0 -18px 40px -28px rgba(34, 211, 238, 0.5);
+    }
+  </style>
 </head>
-<body class="text-gray-200">
+<body class="text-slate-100">
 
-    <!-- Navbar -->
-    <header class="sticky top-0 z-50 bg-[#18181b]/90 backdrop-blur-sm shadow-xl border-b border-zinc-700">
-        <nav class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
-            <a href="#home" class="text-2xl font-bold text-cyan-400 hover:text-cyan-300 transition duration-300">Sivakumar.T</a>
-            
-            <!-- டெஸ்க்டாப் வழிசெலுத்தல் -->
-            <div class="hidden md:flex space-x-6">
-                <a href="#home" class="nav-link">Home</a>
-                <a href="#about" class="nav-link">About</a>
-                <a href="#skills" class="nav-link">Skills</a>
-                <a href="#projects" class="nav-link">Projects</a>
-                <a href="#contact" class="nav-link">Contact</a>
-            </div>
+  <!-- Ambient top gradient -->
+  <div class="pointer-events-none fixed inset-x-0 top-0 z-0 h-80 hero-orbit blur-3xl opacity-70"></div>
 
-            <!-- மொபைல் மெனு பொத்தான் -->
-            <button id="menu-button" class="md:hidden text-gray-300 hover:text-cyan-400 focus:outline-none">
-                <i data-lucide="menu" class="w-6 h-6"></i>
-            </button>
-        </nav>
+  <!-- Navbar -->
+  <header
+    class="sticky top-0 z-40 border-b border-cyan-500/10 bg-slate-950/80 backdrop-blur-xl"
+  >
+    <nav
+      class="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8"
+    >
+      <a
+        href="#home"
+        class="flex items-center gap-2 text-lg font-semibold tracking-tight text-cyan-300 hover:text-cyan-100 transition"
+      >
+        <span
+          class="flex h-8 w-8 items-center justify-center rounded-xl bg-cyan-500/10 ring-1 ring-cyan-400/60"
+        >
+          <span class="h-2.5 w-2.5 rounded-full bg-cyan-400"></span>
+        </span>
+        <span class="hidden sm:inline">Sivakumar.T</span>
+        <span class="sm:hidden">Siva.T</span>
+      </a>
 
-        <!-- மொபைல் மெனு -->
-        <div id="mobile-menu" class="hidden md:hidden bg-[#18181b]/90 border-t border-zinc-700">
-            <a href="#home" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-zinc-700/50 transition duration-300">Home</a>
-            <a href="#about" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-zinc-700/50 transition duration-300">About</a>
-            <a href="#skills" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-zinc-700/50 transition duration-300">Skills</a>
-            <a href="#projects" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-zinc-700/50 transition duration-300">Projects</a>
-            <a href="#contact" onclick="closeMenu()" class="block px-4 py-3 text-gray-300 hover:bg-zinc-700/50 transition duration-300">Contact</a>
+      <!-- Desktop Nav -->
+      <div class="hidden items-center gap-6 text-sm font-medium text-slate-300 md:flex">
+        <a href="#home" class="hover:text-cyan-300 transition">Home</a>
+        <a href="#about" class="hover:text-cyan-300 transition">About</a>
+        <a href="#skills" class="hover:text-cyan-300 transition">Skills</a>
+        <a href="#projects" class="hover:text-cyan-300 transition">Projects</a>
+        <a href="#contact" class="hover:text-cyan-300 transition">Contact</a>
+      </div>
+
+      <!-- CTA + Mobile -->
+      <div class="flex items-center gap-3">
+        <a
+          href="#contact"
+          class="hidden rounded-full bg-gradient-to-r from-cyan-400 to-sky-400 px-4 py-2 text-xs font-semibold text-slate-950 shadow-lg shadow-cyan-500/40 hover:from-cyan-300 hover:to-sky-300 md:inline-flex items-center gap-1.5 transition-transform hover:-translate-y-0.5"
+        >
+          <i data-lucide="mail" class="h-3.5 w-3.5"></i>
+          <span>Hire Me</span>
+        </a>
+        <button
+          id="menu-button"
+          class="inline-flex items-center justify-center rounded-full border border-slate-700/80 bg-slate-900/60 p-2 text-slate-200 hover:border-cyan-400/70 hover:text-cyan-300 md:hidden"
+        >
+          <i data-lucide="menu" class="h-5 w-5"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div
+      id="mobile-menu"
+      class="hidden border-t border-slate-800 bg-slate-950/95 px-4 pb-4 pt-2 md:hidden"
+    >
+      <div class="flex flex-col space-y-2 text-sm font-medium text-slate-200">
+        <a href="#home" class="rounded-lg px-3 py-2 hover:bg-slate-800" data-nav-close>Home</a>
+        <a href="#about" class="rounded-lg px-3 py-2 hover:bg-slate-800" data-nav-close>About</a>
+        <a href="#skills" class="rounded-lg px-3 py-2 hover:bg-slate-800" data-nav-close>Skills</a>
+        <a href="#projects" class="rounded-lg px-3 py-2 hover:bg-slate-800" data-nav-close>Projects</a>
+        <a href="#contact" class="rounded-lg px-3 py-2 hover:bg-slate-800" data-nav-close>Contact</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <!-- Hero -->
+    <section
+      id="home"
+      class="flex min-h-[80vh] items-center justify-center px-4 py-12 sm:py-16"
+    >
+      <div
+        class="tilt mx-auto flex max-w-6xl flex-col items-center gap-10 text-center md:flex-row md:items-center md:text-left"
+      >
+        <div class="flex-1 space-y-6 reveal">
+          <p class="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/5 px-3 py-1 text-xs font-medium text-cyan-200 shadow shadow-cyan-500/30">
+            <span class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+            Open to Frontend / Web Developer Roles
+          </p>
+
+          <div class="space-y-3">
+            <h1
+              class="hero-title-glow text-4xl font-extrabold tracking-tight text-slate-50 sm:text-5xl lg:text-6xl"
+            >
+              Sivakumar&nbsp;T.
+            </h1>
+            <p
+              id="typing-text"
+              class="typing-caret text-xl font-medium text-cyan-200/90 sm:text-2xl"
+            ></p>
+          </div>
+
+          <p class="max-w-xl text-sm text-slate-300 sm:text-base">
+            Results-driven Web Developer focused on building fast, accessible and
+            user-centered interfaces. I love turning ideas into clean, responsive
+            experiences that work beautifully across devices.
+          </p>
+
+          <div class="flex flex-wrap items-center gap-4">
+            <a
+              href="#projects"
+              class="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-400 px-6 py-3 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/40 transition-transform hover:-translate-y-0.5 active:translate-y-0"
+            >
+              Explore Portfolio
+              <i data-lucide="arrow-right" class="h-4 w-4"></i>
+            </a>
+            <a
+              href="#contact"
+              class="inline-flex items-center gap-2 rounded-full border border-slate-600/80 bg-slate-900/60 px-5 py-2.5 text-sm font-medium text-slate-100 hover:border-cyan-400/70 hover:text-cyan-100"
+            >
+              <i data-lucide="sparkles" class="h-4 w-4 text-cyan-300"></i>
+              Let’s Collaborate
+            </a>
+          </div>
         </div>
-    </header>
 
-    <main class="max-w-7xl mx-auto">
-        <!-- ஹீரோ பிரிவு -->
-        <section id="home" class="h-[75vh] flex items-center justify-center text-center p-4 py-20">
-            <div class="space-y-6">
-                <p class="text-xl text-cyan-400 font-medium">Hello, I'm a results-driven</p>
-                <!-- ஹீரோ தலைப்புக்கு பிரகாச அனிமேஷன் சேர்க்கப்பட்டுள்ளது -->
-                <h1 id="hero-title" class="text-5xl sm:text-7xl font-extrabold text-white leading-tight">Sivakumar.T</h1>
-                <p class="text-2xl sm:text-3xl font-light text-gray-400">
-                    <span id="typing-text" class="border-b-4 border-cyan-500/50"></span>
+        <!-- Hero image / profile -->
+        <div class="flex-1 reveal">
+          <div
+            class="relative mx-auto flex h-64 w-64 items-center justify-center rounded-[2rem] border border-cyan-500/30 bg-slate-900/80 p-3 shadow-[0_20px_80px_rgba(8,47,73,0.8)] sm:h-72 sm:w-72"
+          >
+            <div
+              class="absolute -inset-6 -z-10 rounded-[2.5rem] bg-gradient-to-br from-cyan-500/20 via-transparent to-purple-500/20 blur-2xl"
+            ></div>
+            <div
+              class="relative h-full w-full overflow-hidden rounded-[1.6rem] border border-slate-600/80 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950"
+            >
+              <img
+                src="https://placehold.co/600x600/020617/FFFFFF?text=Sivakumar+T"
+                alt="Sivakumar T - Profile"
+                class="h-full w-full object-cover grayscale transition duration-500 hover:grayscale-0"
+              />
+              <div
+                class="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent"
+              ></div>
+              <div
+                class="absolute bottom-3 left-3 flex items-center gap-2 rounded-full bg-slate-900/80 px-3 py-1 text-[11px] font-medium text-slate-200 ring-1 ring-slate-700/80"
+              >
+                <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                Frontend Focus · IST
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="px-4 py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl space-y-8 reveal">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-50 sm:text-4xl">
+            About Me
+          </h2>
+          <div
+            class="section-glow mx-auto mt-4 h-1 w-28 rounded-full bg-gradient-to-r from-cyan-400 via-cyan-300 to-sky-400"
+          ></div>
+          <p class="mt-4 text-sm text-slate-300 sm:text-base">
+            A developer who cares deeply about clarity, performance and user
+            experience.
+          </p>
+        </div>
+
+        <div
+          class="glass-card grid gap-10 rounded-3xl border border-slate-700/70 p-8 md:grid-cols-[1fr,2fr] md:items-center"
+        >
+          <div class="space-y-4">
+            <p class="text-sm font-semibold text-cyan-200 sm:text-base">
+              🎯 Goal: Build user-centric, high-performance web interfaces that solve
+              real business problems and feel effortless to use.
+            </p>
+            <p class="text-sm leading-relaxed text-slate-200 sm:text-base">
+              I’m <span class="font-semibold text-cyan-300">Sivakumar T.</span>, a
+              dedicated and innovative Web Developer with a strong focus on
+              front-end engineering. I enjoy turning ideas into pixel-perfect,
+              production-ready interfaces.
+            </p>
+            <p class="text-sm leading-relaxed text-slate-300 sm:text-base">
+              I have hands-on experience in building static and interactive websites,
+              working with HTML, CSS, JavaScript and modern utility-first styling using
+              Tailwind. I enjoy collaborating closely with teams and I am always eager
+              to learn new tools and patterns to improve my craft.
+            </p>
+          </div>
+
+          <div
+            class="grid gap-4 text-sm text-slate-200 sm:text-[15px] md:pl-4"
+          >
+            <div class="flex items-start gap-3 rounded-2xl bg-slate-900/60 p-4">
+              <i data-lucide="monitor-smartphone" class="mt-0.5 h-5 w-5 text-cyan-300"></i>
+              <div>
+                <h3 class="text-sm font-semibold text-slate-50">
+                  Frontend-first Mindset
+                </h3>
+                <p class="mt-1 text-sm text-slate-300">
+                  Strong focus on layout, responsiveness, accessibility and visual
+                  hierarchy to build usable, clean interfaces.
                 </p>
-                <div class="pt-8 flex justify-center">
-                    <!-- Explore Portfolio (பிரதான பொத்தான்) -->
-                    <a href="#projects" class="inline-flex items-center px-10 py-4 text-lg font-bold text-black 
-                       bg-cyan-400 
-                       rounded-full shadow-lg shadow-cyan-500/50 
-                       hover:bg-cyan-300 active:scale-95
-                       transition duration-300 transform hover:scale-105">
-                        Explore Portfolio
-                        <i data-lucide="arrow-right" class="w-5 h-5 ml-2"></i>
-                    </a>
-                </div>
+              </div>
             </div>
-        </section>
 
-        <!-- என்னைப் பற்றி பிரிவு -->
-        <section id="about" class="py-16 px-4">
-            <!-- இந்த அட்டைக்கு புதிய Neumorphism-style styling கொடுக்கப்பட்டுள்ளது -->
-            <div class="project-card p-8 md:p-10 rounded-3xl">
-                <h2 class="section-heading">About Me</h2>
-                <div class="grid md:grid-cols-2 gap-10 items-center">
-                    <!-- ப்ரொஃபைல் படம் (இப்போது Base64 உட்பொதிக்கப்பட்டது) -->
-                    <div class="relative w-72 h-72 mx-auto md:w-full md:h-full bg-zinc-700 rounded-full overflow-hidden shadow-2xl border-4 border-cyan-600 ring-4 ring-cyan-900/50">
-                        <img 
-                            src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAEAAgEDASIAAhEBAxEB/8QAFwABAQEBAAAAAAAAAAAAAAAAAAECA//EABgBAQEBAQEAAAAAAAAAAAAAAAAAABEC/8QAGQEBAQEBAQEAAAAAAAAAAAAAAAECBAMH/8QAFhEBAQEAAAAAAAAAAAAAAAAAAAEB/9oADAMAAhEDEQA/wDLN1l1p0y6bK3a8y66rGldxLprxrqN0y6tVjC6/jGusWk63O3a6w6jS6nO0Lq3M3QurO4rWldXN1dUKL//Z" 
-                            alt="Sivakumar T. professional photo" 
-                            class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-500"
-                            onerror="this.onerror=null; this.src='https://placehold.co/400x400/374151/FFFFFF?text=Siva+T'"
-                        >
-                    </div>
-                    
-                    <div class="space-y-6">
-                        <p class="text-gray-300 text-lg leading-relaxed font-semibold text-cyan-300 border-b border-cyan-900 pb-3">
-                            🎯 Goal: Building user-centric, high-performance web interfaces that drive business value and deliver seamless digital experiences.
-                        </p>
-                        <p class="text-gray-300 text-lg leading-relaxed">
-                            I am Sivakumar T., a dedicated and innovative Software Engineer with a passion for building robust and scalable applications. My expertise lies in front-end development, transitioning ideas into high-performing digital solutions.
-                        </p>
-                        <p class="text-gray-300 text-lg leading-relaxed">
-                            With hands-on experience in web development, I excel in both front-end user experience design and implementing functional back-end logic. I am always eager to adopt new technologies and solve complex problems efficiently. I thrive in collaborative environments and am committed to continuous learning and growth.
-                        </p>
-                    </div>
-                </div>
+            <div class="flex items-start gap-3 rounded-2xl bg-slate-900/60 p-4">
+              <i data-lucide="cpu" class="mt-0.5 h-5 w-5 text-cyan-300"></i>
+              <div>
+                <h3 class="text-sm font-semibold text-slate-50">
+                  Curious & Detail-Oriented
+                </h3>
+                <p class="mt-1 text-sm text-slate-300">
+                  I like understanding the “why” behind design and technology choices
+                  and polishing the final details that make experiences feel premium.
+                </p>
+              </div>
             </div>
-        </section>
 
-        <!-- திறன்கள் பிரிவு -->
-        <section id="skills" class="py-16 px-4">
-            <h2 class="section-heading">Technical Skills</h2>
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6">
-                <!-- திறன் அட்டைகள் Neumorphism-style உடன் புதுப்பிக்கப்பட்டுள்ளன -->
-                <div class="skill-card">
-                    <i data-lucide="layout-grid" class="icon-primary"></i>
-                    <h3 class="skill-title">Frontend Core</h3>
-                    <p class="skill-description">HTML5 (Semantic), CSS3, JavaScript (ES6)</p>
-                </div>
-                <!-- புதியது: Tailwind CSS ஐத் தனிப்படுத்துதல் -->
-                <div class="skill-card">
-                    <i data-lucide="zap" class="icon-primary"></i>
-                    <h3 class="skill-title">Styling & UI</h3>
-                    <p class="skill-description">Tailwind CSS, Responsive Design, Utility-First</p>
-                </div>
-                <!-- புதியது: Tools & Version Control -->
-                <div class="skill-card">
-                    <i data-lucide="git-branch" class="icon-primary"></i>
-                    <h3 class="skill-title">Tools & Version Control</h3>
-                    <p class="skill-description">Git, GitHub, VS Code, Figma Basics</p>
-                </div>
-                <!-- புதியது: Backend/DB Basics -->
-                <div class="skill-card">
-                    <i data-lucide="database" class="icon-primary"></i>
-                    <h3 class="skill-title">Backend/DB Basics</h3>
-                    <p class="skill-description">Python, Basic SQL Queries, API Integration</p>
-                </div>
-                <!-- திறன் அட்டை 5: Core -->
-                <div class="skill-card lg:col-span-1 sm:col-span-3 col-span-2 mx-auto sm:mx-0">
-                    <i data-lucide="blocks" class="icon-primary"></i>
-                    <h3 class="skill-title">CMS & Templating</h3>
-                    <p class="skill-description">Blogger/Blogspot Customization, Static Site Generators</p>
-                </div>
+            <div class="flex items-start gap-3 rounded-2xl bg-slate-900/60 p-4">
+              <i data-lucide="users" class="mt-0.5 h-5 w-5 text-cyan-300"></i>
+              <div>
+                <h3 class="text-sm font-semibold text-slate-50">
+                  Collaborative Problem Solver
+                </h3>
+                <p class="mt-1 text-sm text-slate-300">
+                  Comfortable working with others, taking feedback, iterating on
+                  designs and aligning with business goals.
+                </p>
+              </div>
             </div>
-        </section>
-
-        <!-- ப்ராஜெக்ட் பிரிவு -->
-        <section id="projects" class="py-16 px-4">
-            <h2 class="section-heading">Featured Projects (Results Focus)</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                
-                <!-- ப்ராஜெக்ட் அட்டை 1: Kongu Region Research Center -->
-                <div class="project-card">
-                    <img src="https://placehold.co/600x400/4c51bf/e5e7eb?text=Research+Center+Website" alt="Kongu Region Research Center" class="rounded-t-2xl w-full h-48 object-cover">
-                    <div class="p-6 space-y-4">
-                        <h3 class="project-title">Kongu Region Research Center</h3>
-                        <p class="text-gray-400">A comprehensive static website for a regional center. Focus on robust information architecture and accessibility.</p>
-                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                            <li class="text-cyan-300 font-medium">Metrics: Improved content retrieval speed by 25% using optimized image delivery.</li>
-                            <li>Role: Designed and developed 100% of the front-end layout and responsive structure.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 text-sm pt-2">
-                            <span class="tag">HTML5</span>
-                            <span class="tag">CSS3</span>
-                            <span class="tag">Responsive Design</span>
-                        </div>
-                        <div class="mt-6">
-                            <a href="https://asiasiva.github.io/Kongu-region-research-center/" target="_blank" rel="noopener noreferrer" 
-                               class="project-link-button">
-                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ப்ராஜெக்ட் அட்டை 2: Store/E-commerce Frontend Mockup -->
-                <div class="project-card">
-                    <img src="https://placehold.co/600x400/10b981/e5e7eb?text=Simple+E-commerce+Layout" alt="Store Frontend Mockup" class="rounded-t-2xl w-full h-48 object-cover">
-                    <div class="p-6 space-y-4">
-                        <h3 class="project-title">Simple Store Frontend</h3>
-                        <p class="text-gray-400">A clean, modern front-end template for a small online store/catalog, emphasizing product clarity.</p>
-                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                            <li class="text-cyan-300 font-medium">Metrics: Achieved a perfect Lighthouse mobile accessibility score of 100/100.</li>
-                            <li>Role: Implemented interactive cart features using vanilla JavaScript for better UX.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 text-sm pt-2">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">JavaScript</span>
-                        </div>
-                        <div class="mt-6">
-                            <a href="https://asiasiva.github.io/Store/" target="_blank" rel="noopener noreferrer" 
-                               class="project-link-button">
-                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ப்ராஜெக்ட் அட்டை 3: Construction Management Landing Page -->
-                <div class="project-card">
-                    <img src="https://placehold.co/600x400/8b5cf6/e5e7eb?text=Construction+Landing+Page" alt="Construction Management Landing Page" class="rounded-t-2xl w-full h-48 object-cover">
-                    <div class="p-6 space-y-4">
-                        <h3 class="project-title">Construction Management Landing Page</h3>
-                        <p class="text-gray-400">A professional landing page focusing on lead generation and clear presentation of services.</p>
-                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                            <li class="text-cyan-300 font-medium">Metrics: Optimized above-the-fold design for quick conversion funnel presentation.</li>
-                            <li>Role: Led the design translation from Figma mockups to fully functional, responsive code.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 text-sm pt-2">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">Responsive Design</span>
-                        </div>
-                        <div class="mt-6">
-                            <a href="https://asiasiva.github.io/Construction/" target="_blank" rel="noopener noreferrer" 
-                               class="project-link-button">
-                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ப்ராஜெக்ட் அட்டை 4: Isha Foundation Layout -->
-                <div class="project-card">
-                    <img src="https://placehold.co/600x400/ff9900/e5e7eb?text=Isha+Foundation+Layout" alt="Isha Foundation Layout" class="rounded-t-2xl w-full h-48 object-cover">
-                    <div class="p-6 space-y-4">
-                        <h3 class="project-title">Isha Foundation Layout</h3>
-                        <p class="text-gray-400">A clean, visual layout design inspired by high-traffic NGO websites, prioritizing content flow.</p>
-                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                            <li class="text-cyan-300 font-medium">Metrics: Achieved 100% mobile compatibility across all major viewport sizes (Bootstrap/Tailwind-like grid system).</li>
-                            <li>Role: Implemented complex multi-section scrolling features and sticky navigation logic.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 text-sm pt-2">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">Layout Design</span>
-                        </div>
-                        <div class="mt-6">
-                            <a href="https://asiasiva.github.io/Isha/" target="_blank" rel="noopener noreferrer" 
-                               class="project-link-button">
-                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- ப்ராஜெக்ட் அட்டை 5: Mazhai-Udumalai -->
-                <div class="project-card">
-                    <img src="https://placehold.co/600x400/10b981/e5e7eb?text=Mazhai+Udumalai+Project" alt="Mazhai-Udumalai Project" class="rounded-t-2xl w-full h-48 object-cover">
-                    <div class="p-6 space-y-4">
-                        <h3 class="project-title">Mazhai-Udumalai Web Portal</h3>
-                        <p class="text-gray-400">A local data portal, designed for clear, quick display of regional data and information.</p>
-                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                            <li class="text-cyan-300 font-medium">Metrics: Created a data display structure that is 90% faster for users to scan than traditional table layouts.</li>
-                            <li>Role: Developed the primary data visualization structure and information sorting logic.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 text-sm pt-2">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">Data Presentation</span>
-                        </div>
-                        <div class="mt-6">
-                            <a href="https://asiasiva.github.io/Mazhai-Udumalai/" target="_blank" rel="noopener noreferrer" 
-                               class="project-link-button">
-                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- ப்ராஜெக்ட் அட்டை 6: UBM Project -->
-                <div class="project-card">
-                    <img src="https://placehold.co/600x400/3b82f6/e5e7eb?text=UBM+Web+Interface" alt="UBM Project Interface" class="rounded-t-2xl w-full h-48 object-cover">
-                    <div class="p-6 space-y-4">
-                        <h3 class="project-title">UBM Interface Mockup</h3>
-                        <p class="text-gray-400">A user-friendly web interface mockup, focusing on clear navigation and data management principles.</p>
-                        <ul class="list-disc list-inside text-sm text-gray-400 space-y-1 mt-2">
-                            <li class="text-cyan-300 font-medium">Metrics: Designed with mobile-first principles, ensuring seamless experience on small screens.</li>
-                            <li>Role: Focused on establishing an intuitive and accessible navigation hierarchy.</li>
-                        </ul>
-                        <div class="flex flex-wrap gap-2 text-sm pt-2">
-                            <span class="tag">HTML</span>
-                            <span class="tag">CSS</span>
-                            <span class="tag">UI/UX Design</span>
-                        </div>
-                        <div class="mt-6">
-                            <a href="https://asiasiva.github.io/UBM/" target="_blank" rel="noopener noreferrer" 
-                               class="project-link-button">
-                                Project Live <i data-lucide="external-link" class="w-4 h-4 ml-2"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <!-- தொடர்பு பிரிவு -->
-        <section id="contact" class="py-16 px-4">
-            <h2 class="section-heading">Get In Touch</h2>
-            <div class="max-w-3xl mx-auto">
-                <div class="grid md:grid-cols-2 gap-8 mb-0">
-                    <!-- மின்னஞ்சல் அட்டை -->
-                    <div class="contact-info-card">
-                        <i data-lucide="mail" class="icon-primary"></i>
-                        <h4 class="text-xl font-semibold text-white">Email Me</h4>
-                        <p class="text-gray-400">I respond quickly to professional inquiries.</p>
-                        <a href="mailto:uzhavan369@gmail.com" class="text-cyan-400 font-medium hover:text-cyan-300 transition duration-300 break-all">uzhavan369@gmail.com</a>
-                    </div>
-                    <!-- தொலைபேசி அட்டை -->
-                    <div class="contact-info-card">
-                        <i data-lucide="phone" class="icon-primary"></i>
-                        <h4 class="text-xl font-semibold text-white">Call or Text</h4>
-                        <p class="text-gray-400">Feel free to reach out during business hours (IST).</p>
-                        <a href="tel:+918667001677" class="text-cyan-400 font-medium hover:text-cyan-300 transition duration-300">+91 86670 01677</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- அடிக்குறிப்பு -->
-    <footer class="bg-[#18181b] border-t border-zinc-700 mt-12 py-6">
-        <div class="container mx-auto px-4 max-w-7xl text-center">
-            <p class="text-gray-500 text-sm mb-4">&copy; 2024 Sivakumar T. All rights reserved.</p>
-            <div class="flex justify-center space-x-6">
-                <!-- GitHub -->
-                <a href="https://github.com/asiasiva" target="_blank" rel="noopener noreferrer" class="social-link"><i data-lucide="github" class="w-6 h-6"></i></a>
-                <!-- LinkedIn (Placeholder - உங்கள் இணைப்பைச் சேர்க்கவும்) -->
-                <a href="#" class="social-link"><i data-lucide="linkedin" class="w-6 h-6"></i></a>
-                <!-- Email -->
-                <a href="mailto:uzhavan369@gmail.com" class="social-link"><i data-lucide="mail" class="w-6 h-6"></i></a>
-                <!-- Phone -->
-                <a href="tel:+918667001677" class="social-link"><i data-lucide="phone" class="w-6 h-6"></i></a>
-            </div>
+          </div>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <!-- ஊடாடலுக்கான ஜாவாஸ்கிரிப்ட் -->
-    <script>
-        
-        // Lucide icon களை உருவாக்குகிறது
-        function initializeIcons() {
-            // Lucide சரியாக ஏற்றப்பட்டிருந்தால் மட்டுமே createIcons-ஐ அழைக்கும்.
-            if (typeof lucide !== 'undefined' && lucide.createIcons) {
-                lucide.createIcons();
-            } else {
-                // Lucide இன்னும் ஏற்றப்படவில்லை என்றால் சிறிது நேரம் காத்திருந்து மீண்டும் முயற்சிக்கவும்
-                setTimeout(initializeIcons, 100);
-            }
-        }
-        
-        // 1. மொபைல் மெனுவை மாற்றுகிறது
-        const menuButton = document.getElementById('menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
+    <!-- Skills -->
+    <section id="skills" class="px-4 py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl space-y-8 reveal">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-50 sm:text-4xl">
+            Technical Skills
+          </h2>
+          <div
+            class="section-glow mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-cyan-300 to-sky-400"
+          ></div>
+          <p class="mt-4 text-sm text-slate-300 sm:text-base">
+            A solid front-end base with supporting tools and backend fundamentals.
+          </p>
+        </div>
 
-        function closeMenu() {
-            mobileMenu.classList.add('hidden');
-        }
+        <div
+          class="grid gap-5 sm:grid-cols-2 lg:grid-cols-5"
+        >
+          <!-- Skill 1 -->
+          <article
+            class="glass-card card-hover flex flex-col gap-3 rounded-2xl border border-slate-700/80 p-5"
+          >
+            <div class="flex items-center justify-between">
+              <i data-lucide="layout-grid" class="h-6 w-6 text-cyan-300"></i>
+              <span class="rounded-full bg-slate-900/70 px-2 py-0.5 text-[10px] font-semibold text-slate-300">
+                Core
+              </span>
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">
+              Frontend Core
+            </h3>
+            <p class="text-xs text-slate-300">
+              Semantic HTML5, modern CSS3, JavaScript (ES6+), responsive layouts and
+              basic accessibility.
+            </p>
+          </article>
 
-        menuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+          <!-- Skill 2 -->
+          <article
+            class="glass-card card-hover flex flex-col gap-3 rounded-2xl border border-slate-700/80 p-5"
+          >
+            <div class="flex items-center justify-between">
+              <i data-lucide="zap" class="h-6 w-6 text-cyan-300"></i>
+              <span class="rounded-full bg-slate-900/70 px-2 py-0.5 text-[10px] font-semibold text-slate-300">
+                UI
+              </span>
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">
+              Styling &amp; UI
+            </h3>
+            <p class="text-xs text-slate-300">
+              Tailwind CSS, utility-first workflows, responsive design systems, clean
+              visual hierarchy.
+            </p>
+          </article>
+
+          <!-- Skill 3 -->
+          <article
+            class="glass-card card-hover flex flex-col gap-3 rounded-2xl border border-slate-700/80 p-5"
+          >
+            <div class="flex items-center justify-between">
+              <i data-lucide="git-branch" class="h-6 w-6 text-cyan-300"></i>
+              <span class="rounded-full bg-slate-900/70 px-2 py-0.5 text-[10px] font-semibold text-slate-300">
+                Tools
+              </span>
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">
+              Tools &amp; Version Control
+            </h3>
+            <p class="text-xs text-slate-300">
+              Git, GitHub, VS Code, basic Figma usage for translating designs into
+              production-ready layouts.
+            </p>
+          </article>
+
+          <!-- Skill 4 -->
+          <article
+            class="glass-card card-hover flex flex-col gap-3 rounded-2xl border border-slate-700/80 p-5"
+          >
+            <div class="flex items-center justify-between">
+              <i data-lucide="database" class="h-6 w-6 text-cyan-300"></i>
+              <span class="rounded-full bg-slate-900/70 px-2 py-0.5 text-[10px] font-semibold text-slate-300">
+                Backend
+              </span>
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">
+              Backend &amp; Database Basics
+            </h3>
+            <p class="text-xs text-slate-300">
+              Python basics, simple SQL queries, REST API consumption and integration
+              into front-end.
+            </p>
+          </article>
+
+          <!-- Skill 5 -->
+          <article
+            class="glass-card card-hover flex flex-col gap-3 rounded-2xl border border-slate-700/80 p-5 lg:col-auto sm:col-span-2"
+          >
+            <div class="flex items-center justify-between">
+              <i data-lucide="blocks" class="h-6 w-6 text-cyan-300"></i>
+              <span class="rounded-full bg-slate-900/70 px-2 py-0.5 text-[10px] font-semibold text-slate-300">
+                CMS
+              </span>
+            </div>
+            <h3 class="text-sm font-semibold text-slate-50">
+              CMS &amp; Templating
+            </h3>
+            <p class="text-xs text-slate-300">
+              Blogger/Blogspot customization, static site setups and basic templating
+              workflows.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="px-4 py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl space-y-8 reveal">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-50 sm:text-4xl">
+            Featured Projects
+          </h2>
+          <div
+            class="section-glow mx-auto mt-4 h-1 w-40 rounded-full bg-gradient-to-r from-cyan-400 via-cyan-300 to-sky-400"
+          ></div>
+          <p class="mt-4 text-sm text-slate-300 sm:text-base">
+            A selection of interfaces and layouts focused on clarity, responsiveness
+            and usability.
+          </p>
+        </div>
+
+        <div class="grid gap-7 md:grid-cols-2">
+          <!-- Project 1 -->
+          <article
+            class="glass-card card-hover flex flex-col overflow-hidden rounded-3xl border border-slate-700/80"
+          >
+            <div class="relative h-44 w-full overflow-hidden bg-slate-900">
+              <img
+                src="https://placehold.co/800x450/1d4ed8/e5e7eb?text=Kongu+Region+Research+Center"
+                alt="Kongu Region Research Center"
+                class="h-full w-full object-cover transition duration-700 hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent"></div>
+              <span
+                class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-semibold text-slate-100 ring-1 ring-slate-700/80"
+              >
+                <i data-lucide="globe-2" class="h-3.5 w-3.5 text-cyan-300"></i>
+                Static Info Portal
+              </span>
+            </div>
+            <div class="space-y-3 p-6">
+              <h3 class="text-base font-semibold text-slate-50">
+                Kongu Region Research Center
+              </h3>
+              <p class="text-xs text-slate-300">
+                A comprehensive static website for a regional center with robust
+                information architecture and accessibility focus.
+              </p>
+              <ul class="mt-2 space-y-1 text-[11px] text-slate-300">
+                <li class="text-cyan-200 font-medium">
+                  ▸ Improved content retrieval speed by ~25% through optimized image
+                  delivery and layout.
+                </li>
+                <li>
+                  ▸ Owned 100% of front-end layout and responsive structure from
+                  scratch.
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">HTML5</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">CSS3</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">
+                  Responsive Design
+                </span>
+              </div>
+              <div class="mt-5">
+                <a
+                  href="https://asiasiva.github.io/Kongu-region-research-center/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-400 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-md shadow-cyan-500/40 hover:from-cyan-300 hover:to-sky-300"
+                >
+                  Project Live
+                  <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article
+            class="glass-card card-hover flex flex-col overflow-hidden rounded-3xl border border-slate-700/80"
+          >
+            <div class="relative h-44 w-full overflow-hidden bg-slate-900">
+              <img
+                src="https://placehold.co/800x450/0f766e/e5e7eb?text=Simple+Store+Frontend"
+                alt="Simple Store Frontend"
+                class="h-full w-full object-cover transition duration-700 hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent"></div>
+              <span
+                class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-semibold text-slate-100 ring-1 ring-slate-700/80"
+              >
+                <i data-lucide="shopping-bag" class="h-3.5 w-3.5 text-cyan-300"></i>
+                E-commerce Layout
+              </span>
+            </div>
+            <div class="space-y-3 p-6">
+              <h3 class="text-base font-semibold text-slate-50">
+                Simple Store Frontend
+              </h3>
+              <p class="text-xs text-slate-300">
+                Clean, modern front-end template for a small online store, designed for
+                product clarity and mobile-first usage.
+              </p>
+              <ul class="mt-2 space-y-1 text-[11px] text-slate-300">
+                <li class="text-cyan-200 font-medium">
+                  ▸ Achieved a perfect Lighthouse mobile accessibility score of
+                  100/100.
+                </li>
+                <li>
+                  ▸ Implemented interactive cart features using vanilla JavaScript for
+                  smoother UX.
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">HTML</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">CSS</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">
+                  JavaScript
+                </span>
+              </div>
+              <div class="mt-5">
+                <a
+                  href="https://asiasiva.github.io/Store/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-400 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-md shadow-cyan-500/40 hover:from-cyan-300 hover:to-sky-300"
+                >
+                  Project Live
+                  <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article
+            class="glass-card card-hover flex flex-col overflow-hidden rounded-3xl border border-slate-700/80"
+          >
+            <div class="relative h-44 w-full overflow-hidden bg-slate-900">
+              <img
+                src="https://placehold.co/800x450/8b5cf6/e5e7eb?text=Construction+Landing+Page"
+                alt="Construction Management Landing Page"
+                class="h-full w-full object-cover transition duration-700 hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent"></div>
+              <span
+                class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-semibold text-slate-100 ring-1 ring-slate-700/80"
+              >
+                <i data-lucide="building-2" class="h-3.5 w-3.5 text-cyan-300"></i>
+                Lead Gen Landing
+              </span>
+            </div>
+            <div class="space-y-3 p-6">
+              <h3 class="text-base font-semibold text-slate-50">
+                Construction Management Landing Page
+              </h3>
+              <p class="text-xs text-slate-300">
+                Professional landing page focused on clear service presentation and
+                conversion-friendly hero layout.
+              </p>
+              <ul class="mt-2 space-y-1 text-[11px] text-slate-300">
+                <li class="text-cyan-200 font-medium">
+                  ▸ Optimized above-the-fold content for quick understanding of the
+                  core offering.
+                </li>
+                <li>
+                  ▸ Translated Figma-style design into fully responsive code with
+                  smooth scrolling experience.
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">HTML</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">CSS</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">
+                  Responsive Design
+                </span>
+              </div>
+              <div class="mt-5">
+                <a
+                  href="https://asiasiva.github.io/Construction/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-400 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-md shadow-cyan-500/40 hover:from-cyan-300 hover:to-sky-300"
+                >
+                  Project Live
+                  <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 4 -->
+          <article
+            class="glass-card card-hover flex flex-col overflow-hidden rounded-3xl border border-slate-700/80"
+          >
+            <div class="relative h-44 w-full overflow-hidden bg-slate-900">
+              <img
+                src="https://placehold.co/800x450/f97316/e5e7eb?text=Isha+Foundation+Layout"
+                alt="Isha Foundation Layout"
+                class="h-full w-full object-cover transition duration-700 hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent"></div>
+              <span
+                class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-semibold text-slate-100 ring-1 ring-slate-700/80"
+              >
+                <i data-lucide="heart-handshake" class="h-3.5 w-3.5 text-cyan-300"></i>
+                NGO Layout
+              </span>
+            </div>
+            <div class="space-y-3 p-6">
+              <h3 class="text-base font-semibold text-slate-50">
+                Isha Foundation Layout
+              </h3>
+              <p class="text-xs text-slate-300">
+                Layout inspired by high-traffic NGO platforms, prioritizing content
+                flow and visual storytelling.
+              </p>
+              <ul class="mt-2 space-y-1 text-[11px] text-slate-300">
+                <li class="text-cyan-200 font-medium">
+                  ▸ Achieved 100% mobile compatibility across major viewport sizes.
+                </li>
+                <li>
+                  ▸ Implemented multi-section scrolling and sticky navigation for easy
+                  exploration.
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">HTML</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">CSS</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">
+                  Layout Design
+                </span>
+              </div>
+              <div class="mt-5">
+                <a
+                  href="https://asiasiva.github.io/Isha/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-400 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-md shadow-cyan-500/40 hover:from-cyan-300 hover:to-sky-300"
+                >
+                  Project Live
+                  <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 5 -->
+          <article
+            class="glass-card card-hover flex flex-col overflow-hidden rounded-3xl border border-slate-700/80"
+          >
+            <div class="relative h-44 w-full overflow-hidden bg-slate-900">
+              <img
+                src="https://placehold.co/800x450/22c55e/e5e7eb?text=Mazhai+Udumalai"
+                alt="Mazhai-Udumalai Web Portal"
+                class="h-full w-full object-cover transition duration-700 hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent"></div>
+              <span
+                class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-semibold text-slate-100 ring-1 ring-slate-700/80"
+              >
+                <i data-lucide="cloud-rain" class="h-3.5 w-3.5 text-cyan-300"></i>
+                Local Data Portal
+              </span>
+            </div>
+            <div class="space-y-3 p-6">
+              <h3 class="text-base font-semibold text-slate-50">
+                Mazhai-Udumalai Web Portal
+              </h3>
+              <p class="text-xs text-slate-300">
+                Local data portal designed for quick, scannable display of regional
+                information.
+              </p>
+              <ul class="mt-2 space-y-1 text-[11px] text-slate-300">
+                <li class="text-cyan-200 font-medium">
+                  ▸ Built a data layout that is significantly easier to scan than
+                  traditional tables.
+                </li>
+                <li>
+                  ▸ Designed the primary visualization structure and information
+                  grouping.
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">HTML</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">CSS</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">
+                  Data Presentation
+                </span>
+              </div>
+              <div class="mt-5">
+                <a
+                  href="https://asiasiva.github.io/Mazhai-Udumalai/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-400 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-md shadow-cyan-500/40 hover:from-cyan-300 hover:to-sky-300"
+                >
+                  Project Live
+                  <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 6 -->
+          <article
+            class="glass-card card-hover flex flex-col overflow-hidden rounded-3xl border border-slate-700/80"
+          >
+            <div class="relative h-44 w-full overflow-hidden bg-slate-900">
+              <img
+                src="https://placehold.co/800x450/3b82f6/e5e7eb?text=UBM+Interface+Mockup"
+                alt="UBM Interface Mockup"
+                class="h-full w-full object-cover transition duration-700 hover:scale-105"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/70 via-transparent"></div>
+              <span
+                class="absolute left-4 top-4 inline-flex items-center gap-1 rounded-full bg-slate-950/80 px-2.5 py-1 text-[11px] font-semibold text-slate-100 ring-1 ring-slate-700/80"
+              >
+                <i data-lucide="panels-top-left" class="h-3.5 w-3.5 text-cyan-300"></i>
+                Dashboard UI
+              </span>
+            </div>
+            <div class="space-y-3 p-6">
+              <h3 class="text-base font-semibold text-slate-50">
+                UBM Interface Mockup
+              </h3>
+              <p class="text-xs text-slate-300">
+                User-friendly web interface mockup focusing on clear navigation and
+                data management principles.
+              </p>
+              <ul class="mt-2 space-y-1 text-[11px] text-slate-300">
+                <li class="text-cyan-200 font-medium">
+                  ▸ Designed with mobile-first principles for small-screen usability.
+                </li>
+                <li>
+                  ▸ Established intuitive navigation hierarchy to simplify decision
+                  paths.
+                </li>
+              </ul>
+              <div class="mt-3 flex flex-wrap gap-2 text-[11px]">
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">HTML</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">CSS</span>
+                <span class="rounded-full bg-cyan-500/10 px-2.5 py-1 text-cyan-200">
+                  UI/UX Design
+                </span>
+              </div>
+              <div class="mt-5">
+                <a
+                  href="https://asiasiva.github.io/UBM/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-cyan-400 to-sky-400 px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-md shadow-cyan-500/40 hover:from-cyan-300 hover:to-sky-300"
+                >
+                  Project Live
+                  <i data-lucide="external-link" class="h-4 w-4"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="px-4 py-12 sm:py-16">
+      <div class="mx-auto max-w-6xl space-y-8 reveal">
+        <div class="text-center">
+          <h2 class="text-3xl font-bold tracking-tight text-slate-50 sm:text-4xl">
+            Get In Touch
+          </h2>
+          <div
+            class="section-glow mx-auto mt-4 h-1 w-32 rounded-full bg-gradient-to-r from-cyan-400 via-cyan-300 to-sky-400"
+          ></div>
+          <p class="mt-4 text-sm text-slate-300 sm:text-base">
+            Prefer quick, clear communication. Drop a message and I’ll respond as
+            soon as possible.
+          </p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          <!-- Email -->
+          <div
+            class="glass-card card-hover flex flex-col gap-3 rounded-2xl border border-slate-700/80 p-6"
+          >
+            <div class="flex items-center gap-3">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-500/10 ring-1 ring-cyan-400/60"
+              >
+                <i data-lucide="mail" class="h-5 w-5 text-cyan-300"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-slate-50">Email Me</h3>
+                <p class="text-xs text-slate-300">
+                  Ideal for detailed discussions and professional enquiries.
+                </p>
+              </div>
+            </div>
+            <a
+              href="mailto:uzhavan369@gmail.com"
+              class="mt-2 break-all text-sm font-medium text-cyan-300 hover:text-cyan-100"
+            >
+              uzhavan369@gmail.com
+            </a>
+          </div>
+
+          <!-- Phone -->
+          <div
+            class="glass-card card-hover flex flex-col gap-3 rounded-2xl border border-slate-700/80 p-6"
+          >
+            <div class="flex items-center gap-3">
+              <div
+                class="flex h-10 w-10 items-center justify-center rounded-2xl bg-cyan-500/10 ring-1 ring-cyan-400/60"
+              >
+                <i data-lucide="phone" class="h-5 w-5 text-cyan-300"></i>
+              </div>
+              <div>
+                <h3 class="text-sm font-semibold text-slate-50">Call or Text</h3>
+                <p class="text-xs text-slate-300">
+                  Available during normal business hours (IST).
+                </p>
+              </div>
+            </div>
+            <a
+              href="tel:+918667001677"
+              class="mt-2 text-sm font-medium text-cyan-300 hover:text-cyan-100"
+            >
+              +91&nbsp;86670&nbsp;01677
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer
+    class="footer-glow border-t border-slate-800 bg-slate-950/95 px-4 py-6"
+  >
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 sm:flex-row">
+      <p class="text-xs text-slate-400">
+        &copy; 2024&nbsp;·&nbsp;Sivakumar T. All rights reserved.
+      </p>
+      <div class="flex items-center gap-5 text-slate-400">
+        <a
+          href="https://github.com/asiasiva"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="transition hover:text-cyan-300 hover:drop-shadow-[0_0_8px_#22d3ee]"
+        >
+          <i data-lucide="github" class="h-5 w-5"></i>
+        </a>
+        <a
+          href="#"
+          class="transition hover:text-cyan-300 hover:drop-shadow-[0_0_8px_#22d3ee]"
+        >
+          <i data-lucide="linkedin" class="h-5 w-5"></i>
+        </a>
+        <a
+          href="mailto:uzhavan369@gmail.com"
+          class="transition hover:text-cyan-300 hover:drop-shadow-[0_0_8px_#22d3ee]"
+        >
+          <i data-lucide="mail" class="h-5 w-5"></i>
+        </a>
+        <a
+          href="tel:+918667001677"
+          class="transition hover:text-cyan-300 hover:drop-shadow-[0_0_8px_#22d3ee]"
+        >
+          <i data-lucide="phone" class="h-5 w-5"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS: Icons, Typing, Tilt, Reveal, Mobile Menu -->
+  <script>
+    // Initialize Lucide Icons
+    function initIcons() {
+      if (typeof lucide !== "undefined" && lucide.createIcons) {
+        lucide.createIcons();
+      } else {
+        setTimeout(initIcons, 100);
+      }
+    }
+
+    // Mobile menu toggle
+    const menuButton = document.getElementById("menu-button");
+    const mobileMenu = document.getElementById("mobile-menu");
+    const navCloseLinks = document.querySelectorAll("[data-nav-close]");
+
+    if (menuButton && mobileMenu) {
+      menuButton.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+      navCloseLinks.forEach((link) =>
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        })
+      );
+    }
+
+    // Typing effect for hero subtitle
+    const slogans = [
+      "A Web Developer",
+      "A Frontend Enthusiast",
+      "Committed to Responsive Design",
+    ];
+    const typingTextElement = document.getElementById("typing-text");
+    let sloganIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let typingSpeed = 110;
+
+    function typeEffect() {
+      const current = slogans[sloganIndex % slogans.length];
+
+      if (isDeleting) {
+        typingTextElement.textContent = current.substring(0, charIndex - 1);
+        charIndex--;
+        typingSpeed = 50;
+      } else {
+        typingTextElement.textContent = current.substring(0, charIndex + 1);
+        charIndex++;
+        typingSpeed = 110;
+      }
+
+      if (!isDeleting && charIndex === current.length) {
+        typingSpeed = 1600;
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        sloganIndex++;
+        typingSpeed = 320;
+      }
+
+      const delay = typingSpeed + (Math.random() * 60 - 30);
+      setTimeout(typeEffect, delay);
+    }
+
+    // Hero tilt effect
+    const tiltElement = document.querySelector(".tilt");
+    if (tiltElement) {
+      window.addEventListener("mousemove", (e) => {
+        const rect = tiltElement.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        const rotateX = (y / rect.height) * -6;
+        const rotateY = (x / rect.width) * 6;
+        tiltElement.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      });
+
+      window.addEventListener("mouseleave", () => {
+        tiltElement.style.transform = "perspective(900px) rotateX(0deg) rotateY(0deg)";
+      });
+    }
+
+    // Scroll reveal
+    const revealElements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("reveal-visible");
+            observer.unobserve(entry.target);
+          }
         });
+      },
+      {
+        threshold: 0.14,
+      }
+    );
 
-        // 2. ஹீரோ முழக்கத்திற்கான தட்டச்சு விளைவு (Typing Effect)
-        const slogans = [
-            "A Web Developer",
-            "A Frontend Enthusiast",
-            "Committed to Responsive Design"
-        ];
-        const typingTextElement = document.getElementById('typing-text');
-        let sloganIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 100;
+    revealElements.forEach((el) => observer.observe(el));
 
-        function typeEffect() {
-            const currentSlogan = slogans[sloganIndex % slogans.length];
-            
-            if (isDeleting) {
-                // நீக்கும் முறை
-                typingTextElement.textContent = currentSlogan.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 50; // வேகமாக நீக்குதல்
-            } else {
-                // தட்டச்சு முறை
-                typingTextElement.textContent = currentSlogan.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 100; // சாதாரண தட்டச்சு வேகம்
-            }
-
-            // வார்த்தை முழுமையாக தட்டச்சு செய்யப்பட்டதா என சரிபார்க்கிறது
-            if (!isDeleting && charIndex === currentSlogan.length) {
-                typingSpeed = 2000; // தட்டச்சு செய்த பிறகு நிறுத்தம்
-                isDeleting = true;
-            }
-            
-            // வார்த்தை முழுமையாக நீக்கப்பட்டதா என சரிபார்க்கிறது
-            if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                sloganIndex++;
-                typingSpeed = 300; // புதிய வார்த்தையைத் தொடங்குவதற்கு முன் நிறுத்தம்
-            }
-
-            // இயற்கையான தட்டச்சுக்கு சிறிய சீரற்ற தன்மையைப் பயன்படுத்துகிறது
-            const delay = typingSpeed + (Math.random() * 50 - 25);
-            setTimeout(typeEffect, delay);
-        }
-
-        window.onload = function() {
-            // ஐகான் தொடக்கத்தை உறுதிசெய்கிறது
-            initializeIcons();
-            typeEffect();
-        };
-
-    </script>
+    window.onload = function () {
+      initIcons();
+      typeEffect();
+    };
+  </script>
 </body>
 </html>
-
