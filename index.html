@@ -11,6 +11,10 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
 
+  <!-- Firebase SDK (Compat version for Vanilla HTML/JS) -->
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -676,8 +680,22 @@
     </div>
   </div>
 
-  <!-- JS: Icons, Typing, Tilt, Reveal, Mobile Menu, Admin functionality -->
+  <!-- JS: Firebase, Icons, Typing, Tilt, Reveal, Mobile Menu, Admin functionality -->
   <script>
+    // Firebase Configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyDq4YZXVEp2U-mCtxV6tuMbZkAesPwYxfw",
+      authDomain: "portfolio-a4b73.firebaseapp.com",
+      projectId: "portfolio-a4b73",
+      storageBucket: "portfolio-a4b73.firebasestorage.app",
+      messagingSenderId: "799075111208",
+      appId: "1:799075111208:web:68fd735671e41b1915c01d"
+    };
+
+    // Initialize Firebase & Firestore
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
     // Initial Projects Data
     const initialProjects = [
       {
@@ -780,21 +798,34 @@
       }
     ];
 
-    // Load or Initialize LocalStorage Projects
-    function getProjects() {
-      const stored = localStorage.getItem("portfolio_projects");
-      if (stored) {
-        return JSON.parse(stored);
-      } else {
-        localStorage.setItem("portfolio_projects", JSON.stringify(initialProjects));
-        return initialProjects;
-      }
-    }
+    let cachedProjects = [];
 
-    function saveProjects(projects) {
-      localStorage.setItem("portfolio_projects", JSON.stringify(projects));
+    // Load or Initialize Firebase Projects
+    async function loadProjects() {
+      try {
+        const snapshot = await db.collection("projects").get();
+        if (snapshot.empty) {
+          // Initialize Firebase with default projects on first run
+          for (const proj of initialProjects) {
+            await db.collection("projects").doc(String(proj.id)).set(proj);
+          }
+          cachedProjects = [...initialProjects];
+        } else {
+          cachedProjects = [];
+          snapshot.forEach(doc => {
+            cachedProjects.push(doc.data());
+          });
+        }
+      } catch (error) {
+        console.error("Firestore read error:", error);
+        cachedProjects = initialProjects;
+      }
       renderProjects();
       populateProjectDropdown();
+    }
+
+    function getProjects() {
+      return cachedProjects;
     }
 
     // Render Projects
@@ -907,7 +938,7 @@
       }
 
       const projects = getProjects();
-      const project = projects.find(p => p.id == id);
+      const project = projects.find(p => String(p.id) === String(id));
       if (project) {
         document.getElementById("project-id").value = project.id;
         document.getElementById("project-title").value = project.title;
@@ -924,14 +955,18 @@
       }
     });
 
-    // Delete project from dropdown selection
-    deleteSelectedBtn.addEventListener("click", () => {
+    // Delete project from Firestore
+    deleteSelectedBtn.addEventListener("click", async () => {
       const id = document.getElementById("project-id").value;
       if (id && confirm("Are you sure you want to delete this project?")) {
-        let projects = getProjects();
-        projects = projects.filter(p => p.id != id);
-        saveProjects(projects);
-        resetForm();
+        try {
+          await db.collection("projects").doc(String(id)).delete();
+          await loadProjects();
+          resetForm();
+        } catch (error) {
+          console.error("Delete error:", error);
+          alert("Error deleting project.");
+        }
       }
     });
 
@@ -946,8 +981,8 @@
       }
     });
 
-    // Form Submit (Add / Edit Project)
-    projectForm.addEventListener("submit", (e) => {
+    // Form Submit (Add / Edit Project) in Firestore
+    projectForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const id = document.getElementById("project-id").value;
       const title = document.getElementById("project-title").value;
@@ -959,29 +994,24 @@
       const image = document.getElementById("project-image").value;
       const link = document.getElementById("project-link").value;
 
-      let projects = getProjects();
+      try {
+        if (id) {
+          // Update project
+          const projectData = { id: isNaN(id) ? id : Number(id), title, badge, icon, desc, highlights, tags, image, link };
+          await db.collection("projects").doc(String(id)).set(projectData, { merge: true });
+        } else {
+          // Add new project
+          const newId = Date.now();
+          const newProject = { id: newId, title, badge, icon, desc, highlights, tags, image, link };
+          await db.collection("projects").doc(String(newId)).set(newProject);
+        }
 
-      if (id) {
-        // Edit existing project
-        projects = projects.map(p => p.id == id ? { id: Number(id), title, badge, icon, desc, highlights, tags, image, link } : p);
-      } else {
-        // Add new project
-        const newProject = {
-          id: Date.now(),
-          title,
-          badge,
-          icon,
-          desc,
-          highlights,
-          tags,
-          image,
-          link
-        };
-        projects.push(newProject);
+        await loadProjects();
+        closeModal();
+      } catch (error) {
+        console.error("Save error:", error);
+        alert("Error saving project to Firebase.");
       }
-
-      saveProjects(projects);
-      closeModal();
     });
 
     // Initialize Lucide Icons
@@ -1083,7 +1113,7 @@
     revealElements.forEach((el) => observer.observe(el));
 
     window.onload = function () {
-      renderProjects();
+      loadProjects();
       typeEffect();
     };
   </script>
